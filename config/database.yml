@@ -8,15 +8,15 @@ default: &default
 
 development:
   <<: *default
-  database: myapp_development
+  database: x_clone_development
 
 
 test:
   <<: *default
-  database: myapp_test
+  database: x_clone_test
 #
 production:
   <<: *default
-  database: myapp_production
-  username: myapp
   password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+  database: x_clone_production
+  username: x_clone
