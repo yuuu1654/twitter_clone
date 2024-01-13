@@ -1,0 +1,22 @@
+databases:
+  - name: x_clone_db
+    databaseName: x_clone_db
+    user: x_clone_db_user
+    region: singapore
+
+services:
+  - type: web
+    name: x_clone_web
+    env: ruby
+    region: singapore
+    plan: free
+    # buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: x_clone_db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+
