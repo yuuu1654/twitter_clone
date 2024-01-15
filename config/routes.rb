@@ -1,10 +1,20 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
-  resources :tasks
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # devise_for :users # Deviseのデフォルトのルーティング
+  
+  devise_for :users, :controllers => {
+    # :registrations => "users/registrations",
+    # :sessions => "users/sessions"
+    registrations: "users/registrations",
+    sessions: "users/sessions"
+  }
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # Deviseが提供するルートのパスまたは名前をオーバーライドするために使う
+  devise_scope :user do
+    # ▼現状なくても動いてる為コメントアウト
+    # get "users/sign_up", to: "registrations#new"
+    # get "users/sign_in", to: "sessions#new"
+  end
 end
+
