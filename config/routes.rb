@@ -2,12 +2,12 @@
 
 Rails.application.routes.draw do
   # devise_for :users # Deviseのデフォルトのルーティング
-  
-  devise_for :users, :controllers => {
+
+  devise_for :users, controllers: {
     # :registrations => "users/registrations",
     # :sessions => "users/sessions"
-    registrations: "users/registrations",
-    sessions: "users/sessions"
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
 
   # Deviseが提供するルートのパスまたは名前をオーバーライドするために使う
@@ -17,4 +17,3 @@ Rails.application.routes.draw do
     # get "users/sign_in", to: "sessions#new"
   end
 end
-
