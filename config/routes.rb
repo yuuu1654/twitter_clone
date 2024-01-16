@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # get 'home/top'
+  root 'home#top'
   # devise_for :users # Deviseのデフォルトのルーティング
 
   devise_for :users, controllers: {
