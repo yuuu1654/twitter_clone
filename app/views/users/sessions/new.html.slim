@@ -1,18 +1,32 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+.container.mt-5 
+  .row.justify-content-center 
+    .col-md-5
+      .card.login-form__container
+        .card-body 
+          h2.text-center.mb-4.login-form__title Xにログイン
+          / ▼rails routesで確認したらログイン時のPOSTリクエストのURLヘルパーメソッドは、user_session_pathとなっているが動作せず、session_pathで動作した
+          / = form_with(model: resource, as: resource_name, url: user_session_path(resource_name), local: true, class: "") do |f|
+          = form_with(model: resource, as: resource_name, url: session_path(resource_name), class: "login-form", local: true) do |f|
+
+            = render "users/shared/error_messages", resource: resource 
+            .form-group 
+              = f.label :email, "メールアドレス", class: "login-form__label"
+              = f.email_field :email, class: "form-control", autocomplete: "email", autofocus: true 
+            .form-group
+              = f.label :password, "パスワード", class: "login-form__label"
+              = f.password_field :password, autocomplete: "new-password", class: "form-control"
+
+            / - if devise_mapping.rememberable?
+            /   .form-group
+            /     .form-check
+            /       = f.check_box :remember_me, class: "form-check-input"
+            /       = f.label :remember_me, class: "form-check-label"
+
+            .form-group.form-group__submit 
+              = f.submit "ログイン", class: "btn btn-primary w-100 login-btn"
+            / = render "users/shared/links"
+
+/ テスト用パスワード : aaaAAA000
+/ テスト用パスワード : aaaAAA000pp
+/ テスト用メールアドレス : qgp36fg3qfelsiabaz@gmail.com
+

@@ -1,4 +1,6 @@
-.registration-form {
+// モーダルの背景色　#242D35
+
+.registration-form__container {
   background-color: #000000;
 }
 
@@ -7,18 +9,22 @@
   font-weight: bold;
 }
 
+.registration-form {
+  padding: 0 60px;
+}
+
 .registration-form__label {
   color: white;
   margin-top: 20px;
 }
 
-.regist-btn {
+.registration-btn {
   border-radius: 30px;
   padding: 10px;
 }
 
 .form-group__submit {
-  // 登録ボタン isSIls939ww0s
+  // 登録ボタン isSIlfirs939ww0s
   // padding: 0 100px;
   margin-top: 30px;
 }
