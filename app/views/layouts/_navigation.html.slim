@@ -1,0 +1,13 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container.px-4.px-lg-5
+    = link_to "Xクローン", root_path, class: "navbar-brand"
+    button.navbar-toggler[type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+      span.navbar-toggler-icon
+    .collapse.navbar-collapse#navbarSupportedContent
+      / ▼右端に寄せる
+      .navbar-nav.ms-auto 
+        - if user_signed_in?
+          = @current_user.name
+        - else
+          = link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary", style: "margin-right: 10px;"
+          = link_to "新規登録", new_user_registration_path, class: 'btn btn-primary' 
