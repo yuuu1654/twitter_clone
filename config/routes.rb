@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   # dev環境でメール送信を確認
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
-  root 'home#top'
+  root 'home#index'
   # devise_for :users # Deviseのデフォルトのルーティング
 
   devise_for :users, controllers: {
