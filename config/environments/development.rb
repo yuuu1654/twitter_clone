@@ -76,5 +76,4 @@ Rails.application.configure do
 
   # メールに関連するホストの設定
   config.action_mailer.default_url_options = { host: 'localhost', port: 3001 }
-
 end
