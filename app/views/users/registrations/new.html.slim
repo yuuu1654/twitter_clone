@@ -15,10 +15,13 @@
             .form-group 
               = f.label :phone_number, "電話番号", class: "registration-form__label"
               = f.telephone_field :phone_number, class: "form-control"
-            .form-group 
+            .form-group
               = f.label :birthday, "生年月日", class: "registration-form__label"
-              br
-              = f.date_select :birthday, start_year: Time.now.year - 100, end_year: Time.now.year, class: "form-select"
+            / .input-group
+            /   = f.date_select :birthday, { include_blank: true, start_year: Time.now.year, end_year: Time.now.year - 100 }, { class: "form-select", prompt: { day: '日', month: '月', year: '年' } }, { use_month_numbers: true }
+            .input-group
+              = f.date_select :birthday, { include_blank: true, start_year: Time.now.year, end_year: Time.now.year - 100, prompt: { day: '日', month: '月', year: '年' }, use_month_numbers: true }, { class: "form-select" }
+
             .form-group
               = f.label :password, "パスワード", class: "registration-form__label"
               = f.password_field :password, autocomplete: "new-password", class: "form-control"
