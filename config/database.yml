@@ -14,9 +14,15 @@ development:
 test:
   <<: *default
   database: x_clone_test
-#
+
+# production:
+#   <<: *default
+#   password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+#   database: x_clone_production
+#   username: x_clone
+
 production:
   <<: *default
+  database: myapp_production
+  username: myapp
   password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
-  database: x_clone_production
-  username: x_clone
