@@ -55,6 +55,7 @@ gem 'bootsnap', require: false
 
 gem 'devise'
 gem 'html2slim'
+gem 'omniauth'
 gem 'slim-rails'
 
 group :development, :test do
