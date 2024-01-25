@@ -1,10 +1,11 @@
 
 = render "layouts/navigation"
 
-.container.mt-3
-  .row
-    .col-md-3
-      - if user_signed_in?
-        = link_to "ポストする", root_path, class: "post-btn btn btn-info"
-    .col-md-6
-    .col-md-3
+= render "/users/shared/notice"
+.row
+  .col-md-3
+    - if user_signed_in?
+      = link_to "ポストする", root_path, class: "post-btn btn btn-info"
+  .col-md-6
+  .col-md-3
+  
