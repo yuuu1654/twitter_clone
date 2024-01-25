@@ -11,5 +11,7 @@ rails db:migrate
 # rails db:seed
 
 # Renderコンソールに設定用のコマンド▼
-# bundle install && rails assets:precompile && rails assets:clean && rails db:migrate && rails db:seed && rake promotion_code:generate
+
 # bundle install && rails assets:precompile && rails assets:clean && rails db:migrate
+
+# bundle install && rails assets:precompile && rails assets:clean && rails db:create && rails db:migrate && rails db:seed
