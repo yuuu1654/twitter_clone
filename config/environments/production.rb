@@ -97,11 +97,11 @@ Rails.application.configure do
   # メール送信設定
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'smtp.mailgun.org',
     port: 587,
-    domain: 'gmail.com',
-    user_name: ENV['GMAIL_USERNAME'],
-    password: ENV['GMAIL_PASSWORD'],
+    domain: ENV['MAILGUN_DOMAIN'], # Mailgunで設定したドメイン
+    user_name: 'postmaster@' + ENV['MAILGUN_DOMAIN'],
+    password: ENV['MAILGUN_SMTP_PASSWORD'], # MailgunのSMTPパスワード
     authentication: 'plain',
     enable_starttls_auto: true
   }
