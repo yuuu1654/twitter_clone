@@ -9,7 +9,7 @@ module Users
     # POST /resource/sign_in
     def create
       super
-      flash[:notice] = "ログインしました"
+      flash[:notice] = 'ログインしました'
     end
 
     # DELETE /resource/sign_out

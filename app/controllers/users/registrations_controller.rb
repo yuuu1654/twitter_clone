@@ -18,7 +18,7 @@ module Users
         resource.skip_confirmation!
         resource.save
       end
-      flash[:notice] = "アカウントを作成しました"
+      flash[:notice] = 'アカウントを作成しました'
     end
 
     # GET /resource/edit
