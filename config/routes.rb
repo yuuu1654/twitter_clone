@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   # dev環境でメール送信を確認
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   root 'home#index'
-  # devise_for :users # Deviseのデフォルトのルーティング
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -12,11 +11,4 @@ Rails.application.routes.draw do
     # ▼OAuthのcallback用ルーティング
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-
-  # Deviseが提供するルートのパスまたは名前をオーバーライドするために使う
-  devise_scope :user do
-    # ▼現状なくても動いてる為コメントアウト
-    # get "users/sign_up", to: "registrations#new"
-    # get "users/sign_in", to: "sessions#new"
-  end
 end
