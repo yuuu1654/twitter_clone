@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    # ▼OAuthのcallback用ルーティング
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   # Deviseが提供するルートのパスまたは名前をオーバーライドするために使う
