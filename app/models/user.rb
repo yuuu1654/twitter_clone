@@ -13,7 +13,7 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       logger.debug "authの中身: #{auth.info.inspect}"
       logger.debug "ユーザー属性: #{user.attributes.inspect}"
-      user.name = "hoge+#{rand(10..99)}"
+      user.name = SecureRandom.alphanumeric(7)
       user.email = auth.info.email.presence || "dummy+#{auth.uid}@example.com"
       user.password = Devise.friendly_token[0, 20]
       user.birthday = Date.new(1900,1,1) # デフォルトの誕生日（必要に応じて変更）
