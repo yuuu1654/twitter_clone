@@ -2,9 +2,9 @@
 
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-        #  :recoverable, :rememberable, :validatable, :confirmable, :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers: %i[github] # ← githubでのOAuthに対応させる
-         :recoverable, :rememberable, :validatable, :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers: %i[github] # ← githubでのOAuthに対応させる
-  
+         :recoverable, :rememberable, :validatable, :lockable,
+         :timeoutable, :trackable, :omniauthable, omniauth_providers: %i[github] # ← githubでのOAuthに対応させる
+
   validates :birthday, presence: true
 
   # ▼uidを必須にした上で、providerカラムの範囲内でuidを一意にする
@@ -17,8 +17,8 @@ class User < ApplicationRecord
       user.name = SecureRandom.alphanumeric(7)
       user.email = auth.info.email.presence || "dummy+#{auth.uid}@example.com"
       user.password = Devise.friendly_token[0, 20]
-      user.birthday = Date.new(1900,1,1) # デフォルトの誕生日（必要に応じて変更）
-      user.phone_number = "090" + rand(10000000..99999999).to_s
+      user.birthday = Date.new(1900, 1, 1) # デフォルトの誕生日（必要に応じて変更）
+      user.phone_number = "090#{rand(10_000_000..99_999_999)}"
     end
   end
 
