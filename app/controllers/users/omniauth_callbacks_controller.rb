@@ -10,7 +10,7 @@ module Users
 
       # ユーザーを検索または作成
       if @user.persisted?
-        @user.skip_confirmation! if @user.respond_to?(:skip_confirmation!)
+        # @user.skip_confirmation! if @user.respond_to?(:skip_confirmation!)
         sign_in_and_redirect @user, event: :authentication
         set_flash_message(:notice, :success, kind: 'Github') if is_navigational_format?
       else
