@@ -105,4 +105,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_07_045057) do
     t.index ["follower_id"], name: "index_follows_on_follower_id"
     t.check_constraint "follower_id <> followed_id", name: "follows_follower_id_followed_id_check"
   end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "follows", "users", column: "followed_id"
+  add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "tweets", "users"
 end
