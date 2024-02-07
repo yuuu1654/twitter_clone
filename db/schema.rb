@@ -42,17 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_07_045057) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.bigint "follower_id", null: false
-    t.bigint "followed_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["followed_id"], name: "index_follows_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_follows_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_follows_on_follower_id"
-    t.check_constraint "follower_id <> followed_id", name: "follows_follower_id_followed_id_check"
-  end
-
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -106,4 +95,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_07_045057) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.bigint "follower_id", null: false
+    t.bigint "followed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_follows_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_follows_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.check_constraint "follower_id <> followed_id", name: "follows_follower_id_followed_id_check"
+  end
 end
