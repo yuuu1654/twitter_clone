@@ -108,4 +108,7 @@ Rails.application.configure do
 
   # メールに関連するホストの設定
   config.action_mailer.default_url_options = { host: 'x-clone-web.onrender.com', protocol: 'https' }
+
+  # ファイルをAmazon S3に保存する
+  config.active_storage.service = :amazon
 end
