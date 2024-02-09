@@ -7,9 +7,9 @@ class HomeController < ApplicationController
     @tweet = Tweet.new
 
     # おすすめツイート
-    @recommended_tweets = Tweet.all.order(created_at: :desc)
+    @recommended_tweets = Tweet.all.order(created_at: :desc).page(params[:page]).per(10)
 
     # フォローしてるユーザーのツイート一覧
-    @following_tweets = Tweet.where(user_id: 14)
+    @following_tweets = Tweet.where(user_id: 14).page(params[:page]).per(10)
   end
 end
