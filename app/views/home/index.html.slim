@@ -60,7 +60,7 @@
           = render "tweets/form"
           / おすすめツイート
           = render partial: "tweets/tweet", collection: @recommended_tweets, as: :tweet
-            = paginate @recommended_tweets
+          = paginate @recommended_tweets
         #following.tab-pane
           / ツイートフォーム
           = render "tweets/form"
