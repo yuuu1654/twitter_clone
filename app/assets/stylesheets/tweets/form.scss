@@ -55,9 +55,11 @@
   display: none;
 }
 
-// .tweet-form__post_btn  {
-	
-// }
+.image-preview {
+  width: 300px; 
+  height: auto; 
+  max-height: 500px; 
+}
 
 .tweet-form__post_btn {
 	color: white;
