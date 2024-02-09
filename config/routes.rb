@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     # ▼OAuthのcallback用ルーティング
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+
+  post "/tweets", to: "tweets#create"
 end
