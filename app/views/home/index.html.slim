@@ -72,8 +72,4 @@
           = render "tweets/form"
           / フォロー中ツイート
           / = render "tweets/tweet", collection: @following_tweets, as: :tweet
-          = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet
-        / ツイート一覧
-        = render "tweets/list"
-    .col-md-3
-  
+          = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
