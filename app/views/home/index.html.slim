@@ -67,9 +67,10 @@
           / おすすめツイート
           / = render "tweets/tweet", collection: @recommended_tweets, as: :tweet
           = render partial: "tweets/tweet", collection: @recommended_tweets, as: :tweet
+            = paginate @recommended_tweets
         #following.tab-pane
           / ツイートフォーム
           = render "tweets/form"
           / フォロー中ツイート
           / = render "tweets/tweet", collection: @following_tweets, as: :tweet
-          = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
+          = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet            = paginate @following_tweets
