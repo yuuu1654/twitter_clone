@@ -67,3 +67,24 @@
           / フォロー中ツイート
           = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
           = paginate @following_tweets
+
+    / .col-md-6
+    /   / タブ
+    /   ul.nav.nav-tabs
+    /     li.nav-item.nav-tab__recommended data-controller="pagination-reset" data-action="click->pagination-reset#resetPagination"
+    /       a.nav-link.active href="#recommended" data-bs-toggle="tab" おすすめ
+    /     li.nav-item.nav-tab__following data-controller="pagination-reset" data-action="click->pagination-reset#resetPagination"
+    /       a.nav-link href="#following" data-bs-toggle="tab" フォロー中
+    /   .tab-content
+    /     #recommended.tab-pane.active
+    /       / ツイートフォーム
+    /       = render "tweets/form"
+    /       / おすすめツイート
+    /       = render partial: "tweets/tweet", collection: @recommended_tweets, as: :tweet
+    /       = paginate @recommended_tweets
+    /     #following.tab-pane
+    /       / ツイートフォーム
+    /       = render "tweets/form"
+    /       / フォロー中ツイート
+    /       = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
+    /       = paginate @following_tweets
