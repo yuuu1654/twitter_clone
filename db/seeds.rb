@@ -4,7 +4,7 @@
 # テスト用ユーザー1 (自分)
 name  = "本番テスト用1"
 email = "test-prd01@gmail.com"
-password = Devise.friendly_token[0, 20]
+password = "testprd01"
 birthday = Date.new(2000, 1, 1) 
 phone_number = "090#{rand(10_000_000..99_999_999)}"
 uid = User.create_unique_string
@@ -18,7 +18,7 @@ User.create!(name:  name,
 # テスト用ユーザー2 (フォロー対象ユーザー)
 name  = "本番テスト用2"
 email = "test-prd02@gmail.com"
-password = Devise.friendly_token[0, 20]
+password = "testprd02"
 birthday = Date.new(2000, 1, 1) 
 phone_number = "090#{rand(10_000_000..99_999_999)}"
 uid = User.create_unique_string
