@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  post "/tweets", to: "tweets#create"
+  post '/tweets', to: 'tweets#create'
 end
