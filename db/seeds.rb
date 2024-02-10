@@ -47,8 +47,9 @@ User.create!(name:,
 # end
 
 # ツイート作成 (フォローしてない人)
+not_followed_user = User.find_by(name: "iIetF2W")
 10.times do |_n|
-  user_id = 17
+  user_id = not_followed_user.id
   sample_sentences = [
     '今日は良い天気ですね。',
     '最近読んだ本が面白かった。',
