@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFollows < ActiveRecord::Migration[7.0]
   def change
     create_table :follows do |t|
@@ -9,9 +11,9 @@ class CreateFollows < ActiveRecord::Migration[7.0]
     end
 
     # 同じフォロワーとフォローしている人の組み合わせがないようにする
-    add_index :follows, [:follower_id, :followed_id], unique: true
-    
+    add_index :follows, %i[follower_id followed_id], unique: true
+
     # 自分自身をフォローする事もないので、そういった組み合わせもないようにする
-    add_check_constraint :follows, "follower_id != followed_id", name: "follows_follower_id_followed_id_check"
+    add_check_constraint :follows, 'follower_id != followed_id', name: 'follows_follower_id_followed_id_check'
   end
 end
