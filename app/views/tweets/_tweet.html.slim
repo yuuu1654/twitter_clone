@@ -3,7 +3,7 @@
 		= image_tag 'tweet-icon.png', class: 'tweet-icon__img'
 	.tweet-info__container 
 		.tweet-name 
-			p hoge 
+			p = tweet.user.name 
 		.tweet-content 
 			p = tweet.content 
 		.tweet__action-area
