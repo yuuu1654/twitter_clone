@@ -13,5 +13,4 @@ rails db:migrate
 # Renderコンソールに設定用のコマンド▼
 
 # bundle install && rails assets:precompile && rails assets:clean && rails db:migrate
-
 # bundle install && rails assets:precompile && rails assets:clean && rails db:create && rails db:migrate && rails db:seed
