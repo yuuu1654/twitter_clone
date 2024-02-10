@@ -4,32 +4,34 @@
 # ユーザー作成
 
 # テスト用ユーザー1 (自分)
-name  = '本番テスト用1'
-email = 'test-prd01@gmail.com'
-password = 'testprd01'
-birthday = Date.new(2000, 1, 1)
-phone_number = "090#{rand(10_000_000..99_999_999)}"
-uid = User.create_unique_string
-User.create!(name:,
-             email:,
-             password:,
-             birthday:,
-             phone_number:,
-             uid:)
+User.create!(
+  name: '本番テスト用1',
+  email: 'test-prd01@gmail.com',
+  password: 'testprd01',
+  birthday: Date.new(2000, 1, 1),
+  phone_number: "090#{rand(10_000_000..99_999_999)}",
+  uid: User.create_unique_string
+)
 
 # テスト用ユーザー2 (フォロー対象ユーザー)
-name  = '本番テスト用2'
-email = 'test-prd02@gmail.com'
-password = 'testprd02'
-birthday = Date.new(2000, 1, 1)
-phone_number = "090#{rand(10_000_000..99_999_999)}"
-uid = User.create_unique_string
-User.create!(name:,
-             email:,
-             password:,
-             birthday:,
-             phone_number:,
-             uid:)
+user2 = User.create!(
+  name: '本番テスト用2',
+  email: 'test-prd02@gmail.com',
+  password: 'testprd02',
+  birthday: Date.new(2000, 1, 1),
+  phone_number: "090#{rand(10_000_000..99_999_999)}",
+  uid: User.create_unique_string
+)
+
+# テスト用ユーザー3 (フォローしていないユーザー)
+user3 = User.create!(
+  name: '本番テスト用3',
+  email: 'test-prd03@gmail.com',
+  password: 'testprd03',
+  birthday: Date.new(2000, 1, 1),
+  phone_number: "090#{rand(10_000_000..99_999_999)}",
+  uid: User.create_unique_string
+)
 
 # 10.times do |n|
 #   name  = "user#{n+10}"
@@ -47,9 +49,8 @@ User.create!(name:,
 # end
 
 # ツイート作成 (フォローしてない人)
-not_followed_user = User.find_by(name: 'iIetF2W')
 10.times do |_n|
-  user_id = not_followed_user.id
+  user_id = user3.id
   sample_sentences = [
     '今日は良い天気ですね。',
     '最近読んだ本が面白かった。',
@@ -71,7 +72,7 @@ end
 
 # ツイート作成 (フォローしてる人)
 10.times do |_n|
-  user_id = User.find_by(email: 'test-prd02@gmail.com').id
+  user_id = user2.id
   sample_sentences = [
     '今日は良い天気ですね。',
     '最近読んだ本が面白かった。',
