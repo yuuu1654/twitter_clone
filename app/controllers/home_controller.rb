@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
+  before_action :current_user, only: [:index]
+
   def index
-    @current_user = current_user
     logger.debug "ログインユーザー情報: #{@current_user.inspect}"
     @tweet = Tweet.new
 
