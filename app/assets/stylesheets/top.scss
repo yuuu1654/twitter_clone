@@ -2,6 +2,12 @@ body {
 	background-color: black;
 }
 
+.col-md-6 {
+	border: 1px solid rgba(186, 212, 230, 0.469);
+	border-top: 0;
+  border-bottom: 0;
+}
+
 .post-btn {
 	color: white;
 	font-weight: bold;
