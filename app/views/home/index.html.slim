@@ -5,7 +5,7 @@
 .container.px-4.px-lg-5
   .row
     .col-md-3
-      = render "tweets/sidebar"
+      = render "tweets/sidebar", user: @user
     .col-md-6
       / タブ
       ul.nav.nav-tabs
@@ -28,7 +28,7 @@
           = paginate @following_tweets
 
     / .col-md-6
-    /   / タブ
+    /   / タブ todo: Stimulusを使ったタブごとにページネーションがきちんと動作するように修正
     /   ul.nav.nav-tabs
     /     li.nav-item.nav-tab__recommended data-controller="pagination-reset" data-action="click->pagination-reset#resetPagination"
     /       a.nav-link.active href="#recommended" data-bs-toggle="tab" おすすめ

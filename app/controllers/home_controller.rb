@@ -5,7 +5,8 @@ class HomeController < ApplicationController
   before_action :logged_in_user?, only: [:index]
 
   def index
-    logger.debug "ログインユーザー情報: #{@current_user.inspect}"
+    @user = current_user
+    logger.debug "ユーザー情報: #{@user.inspect}"
     @tweet = Tweet.new
 
     # おすすめツイート
