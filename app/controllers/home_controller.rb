@@ -18,7 +18,7 @@ class HomeController < ApplicationController
     end
 
     # 空の結果セットもページネーションオブジェクトとして扱う
-    @following_tweets ||= Tweet.none.page(params[:page])
     @recommended_tweets ||= Tweet.none.page(params[:page])
+    @following_tweets ||= Tweet.none.page(params[:page])
   end
 end
