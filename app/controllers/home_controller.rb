@@ -9,12 +9,30 @@ class HomeController < ApplicationController
     logger.debug "ユーザー情報: #{@user.inspect}"
     @tweet = Tweet.new
 
-    # おすすめツイート
-    @recommended_tweets = Tweet.includes(:user).all.order(created_at: :desc).page(params[:page]).per(10)
+    # タブに応じてツイートを取得
+    # case params[:tab]
+    # when 'following'
+    #   # フォローしているユーザーのツイート一覧
+    #   followed_user_id = User.find_by(email: 'test-prd02@gmail.com')
+    #   @following_tweets = Tweet.where(user_id: followed_user_id).includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+    #   logger.debug "@following_tweets: #{@following_tweets.inspect}"
+    # else
+    #   # おすすめツイート
+    #   @recommended_tweets = Tweet.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+    # end
 
-    # フォローしてるユーザーのツイート一覧 (本番テストの為、一時的に直でidを指定 <- フォロー機能実装時に修正)
-    followed_user_id = User.find_by(email: 'test-prd02@gmail.com')
-    # @following_tweets = Tweet.where(user_id: 14).page(params[:page]).per(10)
-    @following_tweets = Tweet.includes(:user).where(user_id: followed_user_id).page(params[:page]).per(10)
+    if params[:tab] == "following"
+      # フォローしているユーザーのツイート一覧
+      followed_user_id = User.find_by(email: 'test-prd02@gmail.com')
+      @following_tweets = Tweet.where(user_id: followed_user_id).includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+      logger.debug "@following_tweets: #{@following_tweets.inspect}"
+    else
+      # おすすめツイート
+      @recommended_tweets = Tweet.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+    end
+  
+    # 空の結果セットもページネーションオブジェクトとして扱う
+    @following_tweets ||= Tweet.none.page(params[:page])
+    @recommended_tweets ||= Tweet.none.page(params[:page])
   end
 end
