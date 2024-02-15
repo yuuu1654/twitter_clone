@@ -6,33 +6,19 @@ class HomeController < ApplicationController
 
   def index
     @user = current_user
-    logger.debug "ユーザー情報: #{@user.inspect}"
     @tweet = Tweet.new
 
-    # タブに応じてツイートを取得
-    # case params[:tab]
-    # when 'following'
-    #   # フォローしているユーザーのツイート一覧
-    #   followed_user_id = User.find_by(email: 'test-prd02@gmail.com')
-    #   @following_tweets = Tweet.where(user_id: followed_user_id).includes(:user).order(created_at: :desc).page(params[:page]).per(10)
-    #   logger.debug "@following_tweets: #{@following_tweets.inspect}"
-    # else
-    #   # おすすめツイート
-    #   @recommended_tweets = Tweet.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
-    # end
-
-    if params[:tab] == "following"
+    if params[:tab] == 'following'
       # フォローしているユーザーのツイート一覧
       followed_user_id = User.find_by(email: 'test-prd02@gmail.com')
-      @following_tweets = Tweet.where(user_id: followed_user_id).includes(:user).order(created_at: :desc).page(params[:page]).per(10)
-      logger.debug "@following_tweets: #{@following_tweets.inspect}"
+      @following_tweets = Tweet.following_tweets(followed_user_id, params[:page])
     else
       # おすすめツイート
-      @recommended_tweets = Tweet.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+      @recommended_tweets = Tweet.recommended_tweets(params[:page])
     end
-  
+
     # 空の結果セットもページネーションオブジェクトとして扱う
     @following_tweets ||= Tweet.none.page(params[:page])
-    @recommended_tweets ||= Tweet.none.page(params[:page])
+    @index ||= Tweet.none.page(params[:page])
   end
 end
