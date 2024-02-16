@@ -13,4 +13,9 @@ Rails.application.routes.draw do
   }
 
   post '/tweets', to: 'tweets#create'
+
+  # get '/users/show', to: 'users#show'
+  # get '/users/:id', to: 'users#show' ← なぜかヘルパーURLが生成されない？ user_path(@user)
+  # resources :users, only: [:show, :edit]
+  resources :users
 end

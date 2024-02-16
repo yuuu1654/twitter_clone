@@ -1,0 +1,61 @@
+= render "layouts/navigation"
+
+= render "/users/shared/notice"
+.container.px-4.px-lg-5
+  .row
+    .col-md-3
+      = render "tweets/sidebar"
+    .col-md-6
+			- if user_signed_in?
+				/ プロフィールエリア
+				h3.user-profile__name ← ゆう
+				.user-profile__container
+					.user-profile__header
+					/ ヘッダーの名前のエリア
+					.user-profile__main
+						.user-profile__img-area
+							= @user.profile_image.attached? ? image_tag(@user.profile_image, class: "background-img") : "画像が存在しません"
+							.user-profile__icon-area 
+								.user-profile__icon-img
+									= @user.avatar_image.attached? ? image_tag(@user.avatar_image, class: "foreground-img") : "画像が存在しません"
+								.user-profile__edit-btn
+									= link_to "プロフィールを編集", edit_user_path(@user), class: 'btn btn-outline-light edit-user-btn' 
+						.user-profile__info-area
+							h3.user-profile__name = @user.name
+							p.user-profile__user-name @yuuu1654
+							span.user-profile__content = @user.introduction
+							.user-profile__other-info-area
+								i.bi.bi-geo-alt
+								= @user.place
+								i.bi.bi-link-45deg
+								span.user-website = @user.website
+								i.bi.bi-balloon
+								| 誕生日 : 
+								= @user.birthday.strftime('%Y年%m月%d日')
+							.user-profile__since-area
+								i.bi.bi-calendar4-week
+								| 2019年1月からTwitterを利用しています
+						.user-profile__tweet-area
+							ul.nav.nav-tabs
+								li.nav-item.nav-tab__my-tweet
+									a.nav-link.nav-link-user-profile.active href="#my-tweet" data-bs-toggle="tab" ポスト
+								li.nav-item.nav-tab__like
+									a.nav-link.nav-link-user-profile href="#like" data-bs-toggle="tab" いいね
+								li.nav-item.nav-tab__retweet
+									a.nav-link.nav-link-user-profile href="#retweet" data-bs-toggle="tab" リツイート
+								li.nav-item.nav-tab__comment
+									a.nav-link.nav-link-user-profile href="#comment" data-bs-toggle="tab" コメント
+							.tab-content
+								#my-tweet.tab-pane.active
+									= render partial: "tweets/tweet", collection: @my_tweets, as: :tweet
+									/ = paginate @my_tweets
+								#like.tab-pane
+									/ = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
+									/ = paginate @following_tweets
+								#retweet.tab-pane
+									/ = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
+									/ = paginate @following_tweets
+								#comment.tab-pane
+									/ = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
+									/ = paginate @following_tweets
+
