@@ -37,25 +37,25 @@
 								| 2019年1月からTwitterを利用しています
 						.user-profile__tweet-area
 							ul.nav.nav-tabs
-								li.nav-item.nav-tab__my-tweet
-									a.nav-link.nav-link-user-profile.active href="#my-tweet" data-bs-toggle="tab" ポスト
-								li.nav-item.nav-tab__like
-									a.nav-link.nav-link-user-profile href="#like" data-bs-toggle="tab" いいね
-								li.nav-item.nav-tab__retweet
-									a.nav-link.nav-link-user-profile href="#retweet" data-bs-toggle="tab" リツイート
-								li.nav-item.nav-tab__comment
-									a.nav-link.nav-link-user-profile href="#comment" data-bs-toggle="tab" コメント
+								li.nav-item.nav-tab__my_tweets
+									= link_to 'ポスト', user_path(@user, tab: 'my_tweets'), class: "nav-link nav-link-top#{' active' if params[:tab].blank? || params[:tab] == 'my_tweets'}"
+								li.nav-item.nav-tab__liked_tweets
+									= link_to 'いいね', user_path(@user, tab: 'liked_tweets'), class: "nav-link nav-link-top#{' active' if params[:tab] == 'liked_tweets'}"
+								li.nav-item.nav-tab__retweeted_tweets
+									= link_to 'リツイート', user_path(@user, tab: 'retweeted_tweets'), class: "nav-link nav-link-top#{' active' if params[:tab] == 'retweeted_tweets'}"
+								li.nav-item.nav-tab__commented_tweets
+									= link_to 'コメント', user_path(@user, tab: 'commented_tweets'), class: "nav-link nav-link-top#{' active' if params[:tab] == 'commented_tweets'}"
 							.tab-content
-								#my-tweet.tab-pane.active
+								#my_tweets.tab-pane class=(params[:tab].blank? || params[:tab] == 'my_tweets' ? 'active' : nil)
 									= render partial: "tweets/tweet", collection: @my_tweets, as: :tweet
-									/ = paginate @my_tweets
-								#like.tab-pane
-									/ = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
-									/ = paginate @following_tweets
-								#retweet.tab-pane
-									/ = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
-									/ = paginate @following_tweets
-								#comment.tab-pane
-									/ = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
-									/ = paginate @following_tweets
+									= paginate @my_tweets
+								#liked_tweets.tab-pane class=(params[:tab] == "liked_tweets" ? "active" : nil)
+									= render partial: "tweets/tweet", collection: @liked_tweets, as: :tweet  
+									= paginate @liked_tweets
+								#retweeted_tweets.tab-pane class=(params[:tab] == "retweeted_tweets" ? "active" : nil)
+									= render partial: "tweets/tweet", collection: @retweeted_tweets, as: :tweet  
+									= paginate @retweeted_tweets
+								#commented_tweets.tab-pane class=(params[:tab] == "commented_tweets" ? "active" : nil)
+									= render partial: "tweets/tweet", collection: @commented_tweets, as: :tweet  
+									= paginate @commented_tweets
 
