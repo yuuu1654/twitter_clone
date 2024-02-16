@@ -4,18 +4,19 @@ class UsersController < ApplicationController
   before_action :current_user, only: [:show]
   before_action :set_user, only: %i[show edit]
 
-  def show    
+  def show
     # ツイートがない時にもtotal_pagesメソッドを実行してエラーが出ないようにする
     @my_tweets ||= Tweet.none.page(params[:page])
     @liked_tweets ||= Tweet.none.page(params[:page])
     @retweeted_tweets ||= Tweet.none.page(params[:page])
     @commented_tweets ||= Tweet.none.page(params[:page])
-    if params[:tab] == "liked_tweets"
-      @liked_tweets = Tweet.where(content: "いいねした投稿です").page(params[:page]).per(10)
-    elsif params[:tab] == "retweeted_tweets"
-      @retweeted_tweets = Tweet.where(content: "リツイートした投稿です").page(params[:page]).per(10)
-    elsif params[:tab] == "commented_tweets"
-      @commented_tweets = Tweet.where(content: "コメントした投稿です").page(params[:page]).per(10)
+    case params[:tab]
+    when 'liked_tweets'
+      @liked_tweets = Tweet.where(content: 'いいねした投稿です').page(params[:page]).per(10)
+    when 'retweeted_tweets'
+      @retweeted_tweets = Tweet.where(content: 'リツイートした投稿です').page(params[:page]).per(10)
+    when 'commented_tweets'
+      @commented_tweets = Tweet.where(content: 'コメントした投稿です').page(params[:page]).per(10)
     else
       @my_tweets = Tweet.my_tweets(@user.id, params[:page])
     end
