@@ -2,10 +2,50 @@
 = render "layouts/navigation"
 
 = render "/users/shared/notice"
-.row
-  .col-md-3
-    - if user_signed_in?
-      = link_to "ポストする", root_path, class: "post-btn btn btn-info"
-  .col-md-6
-  .col-md-3
-  
+.container.px-4.px-lg-5
+  .row
+    .col-md-3
+      = render "tweets/sidebar", user: @user
+    .col-md-6
+      / タブ
+      ul.nav.nav-tabs
+        li.nav-item.nav-tab__recommended
+          = link_to 'おすすめ', root_path(tab: 'recommended'), class: "nav-link nav-link-top#{' active' if params[:tab].blank? || params[:tab] == 'recommended'}"
+        li.nav-item.nav-tab__following
+          = link_to 'フォロー中', root_path(tab: 'following'), class: "nav-link nav-link-top#{' active' if params[:tab] == 'following'}"
+      .tab-content
+        #recommended.tab-pane class=(params[:tab].blank? || params[:tab] == 'recommended' ? 'active' : nil)
+          / ツイートフォーム
+          = render "tweets/form"
+          / おすすめツイート
+          = render partial: "tweets/tweet", collection: @recommended_tweets, as: :tweet
+          = paginate @recommended_tweets
+        #following.tab-pane class=(params[:tab] == 'following' ? 'active' : nil)
+          / ツイートフォーム
+          = render "tweets/form"
+          / フォロー中ツイート
+          = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
+          = paginate @following_tweets
+
+
+
+    / .col-md-6
+    /   / タブ (修正前)
+    /   ul.nav.nav-tabs
+    /     li.nav-item.nav-tab__recommended
+    /       a.nav-link.nav-link-top.active href="#recommended" data-bs-toggle="tab" おすすめ
+    /     li.nav-item.nav-tab__following
+    /       a.nav-link.nav-link-top href="#following" data-bs-toggle="tab" フォロー中
+    /   .tab-content
+    /     #recommended.tab-pane.active
+    /       / ツイートフォーム
+    /       = render "tweets/form"
+    /       / おすすめツイート
+    /       = render partial: "tweets/tweet", collection: @recommended_tweets, as: :tweet
+    /       = paginate @recommended_tweets
+    /     #following.tab-pane
+    /       / ツイートフォーム
+    /       = render "tweets/form"
+    /       / フォロー中ツイート
+    /       = render partial: "tweets/tweet", collection: @following_tweets, as: :tweet  
+    /       = paginate @following_tweets

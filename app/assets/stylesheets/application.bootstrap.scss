@@ -1,8 +1,12 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import "./top";
+@import "./pagination";
 @import "./navigation";
 @import "users/registration";
 @import "users/login";
 @import "users/error";
 @import "users/shared/links";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "tweets/form";
+@import "tweets/tweet";

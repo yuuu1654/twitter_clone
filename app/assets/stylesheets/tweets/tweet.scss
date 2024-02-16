@@ -1,0 +1,39 @@
+.tweet__container {
+	display: flex;
+	align-items: center;
+	border: 0.9px solid rgba(92, 147, 187, 0.168627451);
+}
+
+.tweet-icon__container {
+	// 画像の位置を修正
+	padding: 10px 0 50px 20px;
+}
+
+.tweet-icon__img {
+	height: 40px;
+	width: 40px;
+	border-radius: 30px;
+}
+
+.tweet-info__container {
+	color: white;
+	padding: 20px 0 10px 20px;
+	width: 100%;
+}
+
+.tweet-name {
+
+}
+
+.tweet-content {
+
+}
+
+.tweet__action-area {
+	display: flex;
+	align-items: center;
+}
+
+.tweet__action-icon {
+	padding-right: 60px;
+}
