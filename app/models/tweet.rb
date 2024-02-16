@@ -22,11 +22,12 @@ class Tweet < ApplicationRecord
   }
 
   # 自分のツイート
-  scope :my_tweets, ->(user_id, page) {
-    where(user_id: user_id)
-    .includes(:user)
-    .order(created_at: :desc)
-    .page(page)
-    .per(10)
+  scope :my_tweets, lambda { |user_id, page|
+    where(user_id:)
+      .includes(:user)
+      .order(created_at: :desc)
+      .page(page)
+      .per(10)
+  }
   }
 end
