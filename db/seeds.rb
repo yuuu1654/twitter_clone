@@ -109,7 +109,8 @@
 # followers.each { |follower| follower.follow(user) }
 
 # いいね・リツイート・コメントしたツイートの確認用データ
-test_user = User.find_by(email: 'test-prd01@gmail.com')
+# test_user = User.find_by(email: 'test-prd01@gmail.com')
+test_user = User.find_by(id: 20)
 10.times do |_n|
   user_id = test_user.id
   sample_sentences = %w[
