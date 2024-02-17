@@ -110,16 +110,16 @@
 
 # いいね・リツイート・コメントしたツイートの確認用データ
 # test_user = User.find_by(email: 'test-prd01@gmail.com')
-test_user = User.find_by(id: 20)
-10.times do |_n|
-  user_id = test_user.id
-  sample_sentences = %w[
-    いいねした投稿です
-    リツイートした投稿です
-    コメントした投稿です
-  ]
-  # サンプルツイートからランダムに一つ選ぶ
-  content = sample_sentences.sample
-  Tweet.create!(user_id:,
-                content:)
-end
+# test_user = User.find_by(id: 20)
+# 10.times do |_n|
+#   user_id = test_user.id
+#   sample_sentences = %w[
+#     いいねした投稿です
+#     リツイートした投稿です
+#     コメントした投稿です
+#   ]
+#   # サンプルツイートからランダムに一つ選ぶ
+#   content = sample_sentences.sample
+#   Tweet.create!(user_id:,
+#                 content:)
+# end
