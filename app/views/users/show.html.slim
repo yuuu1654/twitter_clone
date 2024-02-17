@@ -14,10 +14,10 @@
 					/ ヘッダーの名前のエリア
 					.user-profile__main
 						.user-profile__img-area
-							= @user.profile_image.attached? ? image_tag(@user.profile_image, class: "background-img") : "画像が存在しません"
+							= @user.profile_image.attached? ? image_tag(@user.profile_image, class: "background-img") : image_tag('user-prof-bgimg.jpeg', class: "background-img")
 							.user-profile__icon-area 
 								.user-profile__icon-img
-									= @user.avatar_image.attached? ? image_tag(@user.avatar_image, class: "foreground-img") : "画像が存在しません"
+									= @user.avatar_image.attached? ? image_tag(@user.avatar_image, class: "foreground-img") : image_tag('user-icon.png', class: "foreground-img")
 								.user-profile__edit-btn
 									= link_to "プロフィールを編集", edit_user_path(@user), class: 'btn btn-outline-light edit-user-btn' 
 						.user-profile__info-area
