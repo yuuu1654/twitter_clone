@@ -31,8 +31,10 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :phone_number, :introduction, :birthday, :website, :place, :profile_image,
-                                 :avatar_image, :password, :password_confirmation).tap do |user_params|
+    params.require(:user).permit(
+      :name, :email, :phone_number, :introduction, :birthday, :website,
+      :place, :profile_image, :avatar_image, :password, :password_confirmation
+    ).tap do |user_params|
       # 更新時にパスワード・パスワード確認が空なら更新対象から除外する
       if user_params[:password].blank? && user_params[:password_confirmation].blank?
         user_params.delete(:password)
