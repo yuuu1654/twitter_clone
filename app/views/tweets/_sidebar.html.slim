@@ -36,7 +36,7 @@ nav
 				| リスト
 	ul.nav.flex-column 
 		li.nav-item 
-			= link_to user_path(@user), class: "nav-link nav-link__icon" do 
+			= link_to user_path(@current_user), class: "nav-link nav-link__icon" do 
 				i.bi.bi-person
 				| プロフィール
 	= link_to "ポストする", root_path, class: "post-btn btn btn-info"
