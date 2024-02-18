@@ -2,6 +2,9 @@
 
 class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
+  has_one_attached :avatar_image
+  has_one_attached :profile_image
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :lockable,
          :timeoutable, :trackable, :omniauthable, omniauth_providers: %i[github] # ← githubでのOAuthに対応させる

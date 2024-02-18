@@ -24,6 +24,7 @@
 
             .form-group.form-group__submit 
               = f.submit "ログイン", class: "btn btn-info w-100 login-btn"
+          = link_to "新規登録はこちら", new_user_registration_path, class: 'registration-btn__login-form btn btn-primary w-75' 
           = render "users/shared/links"
 
 

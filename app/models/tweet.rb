@@ -20,4 +20,22 @@ class Tweet < ApplicationRecord
       .page(page)
       .per(10)
   }
+
+  # 自分のツイート
+  scope :my_tweets, lambda { |user_id, page|
+    where(user_id:)
+      .includes(:user)
+      .order(created_at: :desc)
+      .page(page)
+      .per(10)
+  }
+
+  # いいねしたツイート
+  # scope :liked_tweets, lambda { |user_id, _tweet_id, page|
+  #   where(user_id:)
+  #     .includes(:user)
+  #     .order(created_at: :desc)
+  #     .page(page)
+  #     .per(10)
+  # }
 end

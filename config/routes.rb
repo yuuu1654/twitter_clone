@@ -12,5 +12,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  # get '/users/show', to: 'users#show'
+  # get '/users/:id', to: 'users#show' ← なぜかヘルパーURLが生成されない？ user_path(@user)
+  # resources :users, only: [:show, :edit]
+  resources :users
+
   post '/tweets', to: 'tweets#create'
 end

@@ -6,7 +6,7 @@ nav
 				|
 	ul.nav.flex-column
 		li.nav-item
-			a.nav-link.nav-link__icon href="#"
+			= link_to root_path, class: "nav-link nav-link__icon" do 
 				i.bi.bi-house-door-fill
 				| ホーム
 	ul.nav.flex-column
@@ -34,9 +34,9 @@ nav
 			a.nav-link.nav-link__icon href="#"
 				i.bi.bi-file-earmark-text
 				| リスト
-	ul.nav.flex-column
-		li.nav-item
-			a.nav-link.nav-link__icon href="#"
+	ul.nav.flex-column 
+		li.nav-item 
+			= link_to user_path(@current_user), class: "nav-link nav-link__icon" do 
 				i.bi.bi-person
 				| プロフィール
 	= link_to "ポストする", root_path, class: "post-btn btn btn-info"
