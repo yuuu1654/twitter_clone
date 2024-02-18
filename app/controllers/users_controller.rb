@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :current_user, only: [:show]
-  before_action :set_user, only: %i[show edit]
+  before_action :set_user, only: %i[show edit update]
 
   def show
     set_specific_tweets
@@ -11,12 +11,17 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    # if @user.update(user_params)
-    #   redirect_to user_path(@user)
-    # else
-    #   # ▼ 何やってるのか調べる ito_junichi
-    #   render :edit, status: :unprocessable_entity
-    # end
+    # パスワードも変更しようとしてるかチェック
+    changing_password = params[:user][:password].present?
+    if @user.update(user_params)
+      # deviseを使っている場合、パスワードを更新すると現在のセッションが無効になる為、再ログインさせる
+      bypass_sign_in(@user) if changing_password
+      # flash[:notice] = "プロフィールを変更しました"
+      redirect_to user_path(@user), notice: 'プロフィールを変更しました'
+    else
+      # ▼ Turboを使ってる場合にバリデーションのエラーメッセージを表示するように設定
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
@@ -26,8 +31,14 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :phone_number, :birthday, :website, :place, :profile_image,
-                                 :avatar_image, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :phone_number, :introduction, :birthday, :website, :place, :profile_image,
+                                 :avatar_image, :password, :password_confirmation).tap do |user_params|
+      # 更新時にパスワード・パスワード確認が空なら更新対象から除外する
+      if user_params[:password].blank? && user_params[:password_confirmation].blank?
+        user_params.delete(:password)
+        user_params.delete(:password_confirmation)
+      end
+    end
   end
 
   # ツイートコレクションの初期設定
