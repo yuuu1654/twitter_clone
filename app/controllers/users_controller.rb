@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :current_user, only: [:show]
   before_action :set_user, only: %i[show edit update]
 
   def show
