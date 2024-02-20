@@ -2,7 +2,6 @@
 
 class TweetsController < ApplicationController
 
-  def show; end
   def create
     # 1. ログインユーザーの投稿インスタンスをメモリ上に作成
     # 2. 画像を@tweetインスタンスに紐づける
