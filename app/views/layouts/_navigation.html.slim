@@ -7,7 +7,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       / ▼右端に寄せる
       .navbar-nav.ms-auto 
         - if user_signed_in?
-          h4.name_text = @current_user.name
+          h4.name_text = current_user.name
           = link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-secondary"
         - else
           = link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary", style: "margin-right: 10px;"
