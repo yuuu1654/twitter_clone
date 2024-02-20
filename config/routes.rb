@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   # resources :users, only: [:show, :edit]
   resources :users
 
-  post '/tweets', to: 'tweets#create'
+  # post '/tweets/create', to: 'tweets#create'
+  # get '/tweets/:id', to: 'tweets#show'
+  resources :tweets
 end
