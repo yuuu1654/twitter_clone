@@ -23,6 +23,16 @@ class TweetsController < ApplicationController
   def update; end
 
   def destroy; end
+
+  private
+
+  # ▼ コメント作成失敗時にも呼び出すので共通化
+  # def set_tweet
+  #   # @tweet = Tweet.find_by(id: params[:id])
+  #   @tweet = Tweet.includes(:comments).find_by(id: params[:id])
+  #   logger.debug "投稿したユーザー: #{@tweet.comments.inspect}"
+  # end
+
   def tweet_params
     params.require(:tweet).permit(:content, :image)
   end
