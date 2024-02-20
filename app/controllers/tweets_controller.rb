@@ -24,4 +24,7 @@ class TweetsController < ApplicationController
   def update; end
 
   def destroy; end
+  def tweet_params
+    params.require(:tweet).permit(:content, :image)
+  end
 end
