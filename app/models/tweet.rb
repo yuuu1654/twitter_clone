@@ -3,9 +3,11 @@
 class Tweet < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  # has_many :likes, dependent: :destroy
-  # has_many :liked_users, through: :likes, source: :user
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
+  has_many :retweets, dependent: :destroy
+  has_many :retweeted_users, through: :retweets, source: :user
 
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
@@ -14,7 +16,7 @@ class Tweet < ApplicationRecord
   # ツイート一覧取得
   scope :recommended_tweets, lambda { |page|
     includes(:user)
-      .order(created_at: :desc)
+      .order(updated_at: :desc)
       .page(page)
       .per(10)
   }
@@ -32,7 +34,7 @@ class Tweet < ApplicationRecord
   scope :my_tweets, lambda { |user_id, page|
     where(user_id:)
       .includes(:user)
-      .order(created_at: :desc)
+      .order(updated_at: :desc)
       .page(page)
       .per(10)
   }

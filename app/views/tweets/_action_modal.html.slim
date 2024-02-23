@@ -1,0 +1,8 @@
+/ 3点ボタンのドロップダウンメニュー
+- if current_user != other_user
+  .dropdown
+    button.user-action-btn.btn type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"
+      | •••
+    ul.user-action-items.dropdown-menu aria-labelledby="dropdownMenuButton"
+      li
+        = follow_or_unfollow_button(current_user, other_user)

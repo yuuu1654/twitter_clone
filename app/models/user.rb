@@ -3,6 +3,23 @@
 class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet # いいねしたツイートの集合
+  has_many :retweets, dependent: :destroy
+  has_many :retweeted_tweets, through: :retweets, source: :tweet # リツイートしたツイートの集合
+  # フォローしている人
+  # follower_id : フォローする側のid, このidを持つユーザーが他のユーザーをフォローしているという関係を示す
+  has_many :active_relationships, class_name: 'Follow',
+                                  foreign_key: 'follower_id',
+                                  dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  # フォローしてくれている人
+  # followed_id : フォローされる側のid, このidを持つユーザーを他のユーザーがフォローしているという関係を示す
+  has_many :passive_relationships, class_name: 'Follow',
+                                   foreign_key: 'followed_id',
+                                   dependent: :destroy
+  has_many :followers, through: :active_relationships, source: :follower
+
   has_one_attached :avatar_image
   has_one_attached :profile_image
 
@@ -29,5 +46,49 @@ class User < ApplicationRecord
 
   def self.create_unique_string
     SecureRandom.uuid
+  end
+
+  # いいね関連
+  def liked?(tweet)
+    liked_tweets.include?(tweet)
+  end
+
+  def like_tweet(tweet)
+    likes.create(tweet_id: tweet.id)
+  end
+
+  def unlike_tweet(user, tweet)
+    like = Like.find_by(user_id: user.id, tweet_id: tweet.id)
+    like&.destroy
+  end
+
+  # リツイート関連
+  def retweeted?(tweet)
+    retweeted_tweets.include?(tweet)
+  end
+
+  def retweet_tweet(tweet)
+    retweets.create(tweet_id: tweet.id)
+  end
+
+  def unretweet_tweet(user, tweet)
+    retweet = Retweet.find_by(user_id: user.id, tweet_id: tweet.id)
+    retweet&.destroy
+  end
+
+  # フォロー関連
+  def follow(other_user)
+    # 関連づけられたオブジェクト(other_user)が、既にデータベースに保存されている場合のみ<<が使えるっぽい
+    following << other_user
+    # 以下でも同様に動作した
+    # active_relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
   end
 end

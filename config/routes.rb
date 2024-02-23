@@ -21,4 +21,13 @@ Rails.application.routes.draw do
   # get '/tweets/:id', to: 'tweets#show'
   resources :tweets
   resources :comments
+
+  # post "/likes/:tweet_id/create", to: "likes#create"
+  # delete "/likes/:tweet_id/destroy", to: "likes#destroy"
+  resources :likes, only: %i[create destroy]
+  # resources :tweets do
+  #   resources :likes, only: [:create, :destroy], shallow: true
+  # end
+  resources :retweets, only: %i[create destroy]
+  resources :relationships, only: %i[create destroy]
 end

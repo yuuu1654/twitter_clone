@@ -5,12 +5,20 @@
     - else
       = image_tag('user-icon.png', class: 'tweet-icon__img')
   .tweet-info__container 
-    .tweet-name 
+    .tweet-name__area
       p = tweet.user.name 
-    .tweet-content 
-      p = tweet.content 
+    .tweet-content__area
+      = link_to tweet_path(tweet), class: "tweet-content__link" do
+        p = simple_format tweet.content 
+    .tweet-image__area
+      - if tweet.image.attached?
+        = image_tag tweet.image, class: "tweet-image"
     .tweet__action-area
-      i.bi.bi-chat.tweet__action-icon
-      i.bi.bi-repeat.tweet__action-icon
-      i.bi.bi-heart.tweet__action-icon
-      i.bi.bi-bookmark.tweet__action-icon
+      .action-icon__area
+        i.bi.bi-chat
+      .action-icon__area
+        = retweet_or_unretweet_button(current_user, tweet)
+      .action-icon__area
+        = like_or_unlike_button(current_user, tweet)
+      .action-icon__area
+        i.bi.bi-bookmark

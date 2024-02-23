@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class TweetsController < ApplicationController
+  before_action :logged_in_user?, only: [:show]
+  before_action :set_tweet, only: [:show]
 
   def create
     # 1. ログインユーザーの投稿インスタンスをメモリ上に作成
@@ -15,6 +17,14 @@ class TweetsController < ApplicationController
       set_top_page_tweets # トップページ描画に必要なデータを準備
       render template: 'home/index', status: :unprocessable_entity
     end
+  end
+
+  def show
+    # 1. 特定のツイートに紐づいたコメントも取ってきて表示
+    @comment = Comment.new # コメントフォーム表示させる為
+    set_comments
+    # 以下のデバッグ出力で@commentにエラー情報が含まれていないことを確認
+    logger.debug "新しいコメントのエラー: #{@comment.errors.inspect}"
   end
 
   def edit; end
