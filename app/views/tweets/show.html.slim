@@ -1,2 +1,42 @@
-h1 Tweets#show
-p Find me in app/views/tweets/show.html.slim
+= render "layouts/navigation"
+
+= render "/users/shared/notice"
+
+.container.px-4.px-lg-5
+  .row
+    .col-md-3
+      = render "tweets/sidebar"
+    .col-md-6
+      .tweet-detail__container
+        / プロフィールエリア
+        .top-page__link-area 
+          = link_to root_path, class: "top-page__link" do 
+            h4 ← ポストする
+        .user-info__container 
+          .user-icon__area 
+            - if @tweet.user.avatar_image.attached?
+              = image_tag(@tweet.user.avatar_image, class: "tweet-icon__img")
+            - else
+              = image_tag('user-icon.png', class: 'tweet-icon__img')
+          .user-info__area 
+            p.posted-user__name = @tweet.user.name
+            p.posted-user__user-name @yuuu1654
+          .user-action__area 
+            = render "tweets/action_modal", current_user: current_user, other_user: @tweet.user
+        .tweet-detail-content__container
+          .tweet-detail-content__area
+            p = simple_format @tweet.content, class: "tweet-detail-content"
+          .tweet-detail-image__area
+            - if @tweet.image.attached?
+              = image_tag @tweet.image, class: "tweet-detail-img"
+          .tweet-detail-created_at__container 
+            = @tweet.created_at.strftime('%Y年%m月%d日 %H:%M')
+          .tweet-detail__action-area
+						.detail-action-icon__area
+							i.bi.bi-chat.tweet-detail__action-icon
+						.detail-action-icon__area
+							i.bi.bi-repeat.tweet-detail__action-icon
+						.detail-action-icon__area
+							= like_or_unlike_button(current_user, @tweet)
+						.detail-action-icon__area
+							= retweet_or_unretweet_button(current_user, @tweet)
