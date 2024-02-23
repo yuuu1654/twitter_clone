@@ -40,3 +40,6 @@
 							= like_or_unlike_button(current_user, @tweet)
 						.detail-action-icon__area
 							= retweet_or_unretweet_button(current_user, @tweet)
+        / コメントフォーム
+        = render "comments/form"
+        = render partial: "comments/comment", collection: @comments, as: :comment 
