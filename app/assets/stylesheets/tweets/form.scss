@@ -15,18 +15,19 @@
 }
 
 .tweet-form__textarea {
-	width: 100%;
+	// width: 100%;
 	border: none;
-	height: 128px;
+	height: 110px;
 	resize: none; 
 	outline: 0;
 	background-color: black;
 	color: white;
+	width: 500px;
 }
 
 .tweet-form__textarea::placeholder {
 	padding: 40px 0 0 20px;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .tweet-form__footer  {
@@ -43,7 +44,7 @@
 	background: black;
 	color: #2B9BF0;
 	border: none;
-	font-size: 30px;
+	font-size: 25px;
 }
 
 .tweet-form__img-up-btn .form-control-file {

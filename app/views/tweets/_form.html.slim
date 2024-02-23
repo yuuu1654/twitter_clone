@@ -1,4 +1,9 @@
-= form_with(model: @tweet, class: "tweet-form__container", local: true) do |f|
+= form_with(model: @tweet, url: tweets_path, class: "tweet-form__container", local: true) do |f|
+  - if @tweet.errors.any?
+    .alert.alert-danger
+      ul
+        - @tweet.errors.full_messages.each do |msg|
+          li = msg
   .tweet-form__main
     = link_to user_path(current_user), class: "nav-link nav-link__icon" do 
       - if current_user.avatar_image.attached?
@@ -7,10 +12,9 @@
         = image_tag 'tweet-icon.png', class: 'tweet-form__icon-img'
     = f.text_area :content, class: "tweet-form__textarea", placeholder: "今どうしてる？"
   .tweet-form__footer 
-    .tweet-form_img-up-area data-controller="image-upload"
-      label.tweet-form__img-up-btn data-action="click->image-upload#openFileField"
+    .tweet-form_img-up-area
+      label.tweet-form__img-up-btn
         i.bi.bi-image
-        = f.file_field :image, { accept: "image/jpeg,image/gif,image/png", class: "form-control-file d-none", direct_upload: true, "data-image-upload-target": "fileField" }
-      img#image-preview.image-preview[data-image-upload-target="imagePreview" style="display: none;"]
+        = f.file_field :image, class: "form-control-file"
     .tweet-form__post-btn-area 
       = f.submit "ポストする", class: "tweet-form__post_btn btn"

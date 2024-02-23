@@ -2,7 +2,14 @@
 
 class Tweet < ApplicationRecord
   belongs_to :user
-  has_one_attached :images
+  has_one_attached :image
+  # has_many :comments, dependent: :destroy
+  # has_many :likes, dependent: :destroy
+  # has_many :liked_users, through: :likes, source: :user
+
+  validates :user_id, presence: true
+  validates :content, presence: true, length: { maximum: 140 }
+  validates :image, content_type: { in: ['image/jpeg', 'image/gif', 'image/png'], message: '適切な画像フォーマットを使用してください' }
 
   # ツイート一覧取得
   scope :recommended_tweets, lambda { |page|
