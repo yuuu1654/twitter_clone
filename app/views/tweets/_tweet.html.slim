@@ -14,7 +14,13 @@
       - if tweet.image.attached?
         = image_tag tweet.image, class: "tweet-image"
     .tweet__action-area
-      i.bi.bi-chat.tweet__action-icon
-      i.bi.bi-repeat.tweet__action-icon
-      i.bi.bi-heart.tweet__action-icon
-      i.bi.bi-bookmark.tweet__action-icon
+      .action-icon__area
+        i.bi.bi-chat
+      .action-icon__area
+        i.bi.bi-repeat
+        / = retweet_or_unretweet_button(current_user, tweet)
+      .action-icon__area
+        i.bi.bi-heart
+        / = like_or_unlike_button(current_user, tweet)
+      .action-icon__area
+        i.bi.bi-bookmark
