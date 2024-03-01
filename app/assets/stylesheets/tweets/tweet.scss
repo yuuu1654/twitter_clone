@@ -2,11 +2,14 @@
 	display: flex;
 	align-items: center;
 	border: 0.9px solid rgba(92, 147, 187, 0.168627451);
+	position: relative;
 }
 
 .tweet-icon__container {
 	// 画像の位置を修正
-	padding: 10px 0 50px 20px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
 }
 
 .tweet-icon__img {
@@ -17,16 +20,20 @@
 
 .tweet-info__container {
 	color: white;
-	padding: 20px 0 10px 20px;
+	padding: 20px 0 10px 80px;
 	width: 100%;
 }
 
-.tweet-name {
-
+.tweet-content__link {
+	color: white;
+	text-decoration: none;
 }
 
-.tweet-content {
-
+.tweet-image {
+	width: 500px;
+	height: 280px;
+	margin-bottom: 20px;
+	border-radius: 10px;
 }
 
 .tweet__action-area {
@@ -34,6 +41,6 @@
 	align-items: center;
 }
 
-.tweet__action-icon {
-	padding-right: 60px;
+.action-icon__area {
+	margin-right: 100px;
 }
