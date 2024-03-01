@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  # コメントコントローラはコメント作成の責務のみ
-
   def create
     @tweet = Tweet.find(params[:tweet_id])
     @comment = @tweet.comments.build(comment_params.merge(user: current_user))
