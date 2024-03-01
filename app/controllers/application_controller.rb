@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path
   end
 
+  def set_tweet
+    # ツイートに紐づくコメントも一緒に取得
+    @tweet = Tweet.includes(:comments).find_by(id: params[:id])
+    @comments = @tweet.comments
+  end
+
   def set_top_page_tweets
     # 空の結果セットもページネーションオブジェクトとして扱う
     @recommended_tweets ||= Tweet.none.page(params[:page])
