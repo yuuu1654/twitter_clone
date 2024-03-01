@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class TweetsController < ApplicationController
+  before_action :logged_in_user?, only: [:show]
   before_action :set_tweet, only: [:show]
 
   def create
