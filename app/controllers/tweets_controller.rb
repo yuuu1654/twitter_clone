@@ -19,6 +19,10 @@ class TweetsController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.new # コメントフォーム表示させる為
+  end
+
   def edit; end
 
   def update; end
