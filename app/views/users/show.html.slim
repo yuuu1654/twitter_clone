@@ -22,7 +22,7 @@
 									= link_to "プロフィールを編集", edit_user_path(@user), class: 'btn btn-outline-light edit-user-btn' 
 						.user-profile__info-area
 							h3.user-profile__name = @user.name
-							p.user-profile__user-name @yuuu1654
+							p.user-profile__user-name = @user.username ||= "@yuuu1654"
 							span.user-profile__content = @user.introduction
 							.user-profile__other-info-area
 								i.bi.bi-geo-alt

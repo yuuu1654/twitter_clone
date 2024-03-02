@@ -20,7 +20,7 @@
               = image_tag('user-icon.png', class: 'tweet-icon__img')
           .user-info__area 
             p.posted-user__name = @tweet.user.name
-            p.posted-user__user-name @yuuu1654
+            p.posted-user__user-name = @tweet.user.username ||= "@yuuu1654"
           / .user-action__area 
           /   = render "tweets/action_modal", current_user: current_user, other_user: @tweet.user
         .tweet-detail-content__container
