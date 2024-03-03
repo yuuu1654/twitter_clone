@@ -19,6 +19,9 @@ body {
 .like-btn__link {
   color: #8899a6;
 	text-decoration: none;
+  &:hover {
+    color: #8899a6;
+  }
 }
 
 .like-btn-unlike {
@@ -27,4 +30,8 @@ body {
 .like-btn-unlike__link {
 	text-decoration: none;
   color: #ff2581;
+  &:hover {
+    color: #ff2581;
+  }
+}
 }
