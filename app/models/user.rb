@@ -35,4 +35,18 @@ class User < ApplicationRecord
   def self.create_username
     "@#{SecureRandom.alphanumeric(7)}"
   end
+
+  # いいね関連
+  def liked?(tweet)
+    liked_tweets.include?(tweet)
+  end
+
+  def like_tweet(tweet)
+    likes.create(tweet_id: tweet.id)
+  end
+
+  def unlike_tweet(user, tweet)
+    like = Like.find_by(user_id: user.id, tweet_id: tweet.id)
+    like&.destroy
+  end
 end
