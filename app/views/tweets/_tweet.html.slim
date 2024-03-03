@@ -20,7 +20,6 @@
         i.bi.bi-repeat
         / = retweet_or_unretweet_button(current_user, tweet)
       .action-icon__area
-        i.bi.bi-heart
-        / = like_or_unlike_button(current_user, tweet)
+        = like_or_unlike_button(current_user, tweet)
       .action-icon__area
         i.bi.bi-bookmark
