@@ -96,6 +96,11 @@
 # User.all
 # test_user = User.find_by(email: 'test-prd01@gmail.com')
 # followed_user = User.find_by(email: 'test-prd02@gmail.com')
+# いいねデータ作成
+tweets = Tweet.all
+test_user = User.find_by(email: 'test-prd01@gmail.com')
+liked_tweets = tweets[15..20]
+liked_tweets.each { |tweet| test_user.like_tweet(tweet) }
 
 # # フォロー関係作成
 # Follow.find_or_create_by(follower_id: test_user.id, followed_id: followed_user.id)
