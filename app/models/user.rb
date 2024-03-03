@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  # test
   has_many :tweets, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
