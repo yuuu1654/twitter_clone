@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet # いいねしたツイートの集合
   has_one_attached :avatar_image
   has_one_attached :profile_image
 
