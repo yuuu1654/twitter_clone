@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   # post '/tweets/create', to: 'tweets#create'
   # get '/tweets/:id', to: 'tweets#show'
   resources :tweets
+  resources :comments
 end

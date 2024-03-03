@@ -1,0 +1,90 @@
+.tweet-detail__container {
+	
+}
+
+.top-page__link-area {
+	padding: 10px;
+}
+
+.top-page__link {
+	color: white;
+	text-decoration: none;
+}
+
+.user-info__container {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.user-icon__area {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.user-info__area {
+	position: absolute;
+	left: 50px;
+	top: -5px;
+}
+
+.user-action__area {
+	position: absolute;
+	left: 500px;
+	top: -5px;
+}
+
+.posted-user__name {
+	margin-bottom: 0;
+	font-weight: bold;
+	color: white;
+}
+
+.posted-user__user-name {
+	color: #9b9a9a;
+}
+
+.tweet-detail-content__container {
+
+}
+
+.tweet-detail-content__area {
+	margin-top: 60px;
+}
+
+.tweet-detail-content {
+	color: white;
+}
+
+.tweet-detail-img {
+	width: 580px;
+	height: 350px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+
+.tweet-detail-created_at__container {
+	color: #9b9a9a;
+	margin-bottom: 20px;
+}
+
+.tweet-detail-created_at {
+	
+}
+
+.tweet-detail__action-area {
+	display: flex;
+	align-items: center;
+	padding: 10px 0 10px 10px;
+	border-top: 0.9px solid rgba(92, 147, 187, 0.168627451);
+	border-bottom: 0.9px solid rgba(92, 147, 187, 0.168627451);
+}
+
+.tweet-detail__action-icon {
+	color: white;
+}
+
+.detail-action-icon__area {
+	margin-right: 110px;
+}

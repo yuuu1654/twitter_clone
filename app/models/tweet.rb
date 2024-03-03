@@ -3,9 +3,9 @@
 class Tweet < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  # has_many :comments, dependent: :destroy
   # has_many :likes, dependent: :destroy
   # has_many :liked_users, through: :likes, source: :user
+  has_many :comments, dependent: :destroy
 
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }

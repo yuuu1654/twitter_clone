@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class TweetsController < ApplicationController
+  before_action :logged_in_user?, only: [:show]
+  before_action :set_tweet, only: [:show]
 
   def create
     # 1. ログインユーザーの投稿インスタンスをメモリ上に作成
@@ -17,6 +19,10 @@ class TweetsController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.new # コメントフォーム表示させる為
+  end
+
   def edit; end
 
   def update; end
@@ -24,13 +30,6 @@ class TweetsController < ApplicationController
   def destroy; end
 
   private
-
-  # ▼ コメント作成失敗時にも呼び出すので共通化
-  # def set_tweet
-  #   # @tweet = Tweet.find_by(id: params[:id])
-  #   @tweet = Tweet.includes(:comments).find_by(id: params[:id])
-  #   logger.debug "投稿したユーザー: #{@tweet.comments.inspect}"
-  # end
 
   def tweet_params
     params.require(:tweet).permit(:content, :image)

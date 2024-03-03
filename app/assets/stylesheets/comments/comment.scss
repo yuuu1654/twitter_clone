@@ -1,46 +1,56 @@
-.tweet__container {
+.comment__container {
 	display: flex;
 	align-items: center;
 	border: 0.9px solid rgba(92, 147, 187, 0.168627451);
 	position: relative;
 }
 
-.tweet-icon__container {
+.comment-icon__container {
 	// 画像の位置を修正
 	position: absolute;
 	top: 20px;
 	left: 20px;
 }
 
-.tweet-icon__img {
+.comment-icon__img {
 	height: 40px;
 	width: 40px;
 	border-radius: 30px;
 }
 
-.tweet-info__container {
+.comment-info__container {
 	color: white;
 	padding: 20px 0 10px 80px;
 	width: 100%;
 }
 
-.tweet-content__link {
+.comment-user-info__container {
+	display: flex;
+	align-items: center;
+}
+
+.comment-created_at__area {
+	color: #9b9a9a;
+	margin-left: 10px;
+}
+
+.comment-content__link {
 	color: white;
 	text-decoration: none;
 }
 
-.tweet-image {
+.comment-image {
 	width: 500px;
 	height: 280px;
 	margin-bottom: 20px;
 	border-radius: 10px;
 }
 
-.tweet__action-area {
+.comment__action-area {
 	display: flex;
 	align-items: center;
 }
 
-.action-icon__area {
-	margin-right: 100px;
+.comment__action-icon {
+	padding-right: 90px;
 }
