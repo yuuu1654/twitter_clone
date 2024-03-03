@@ -27,6 +27,9 @@
 .tweet-content__link {
 	color: white;
 	text-decoration: none;
+	&:hover {
+		color: white;
+	}
 }
 
 .tweet-image {
