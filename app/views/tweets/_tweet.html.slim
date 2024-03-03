@@ -1,9 +1,10 @@
 .tweet__container 
   .tweet-icon__container
-    - if tweet.user.avatar_image.attached?
-      = image_tag(tweet.user.avatar_image, class: "tweet-icon__img")
-    - else
-      = image_tag('user-icon.png', class: 'tweet-icon__img')
+    = link_to user_path(tweet.user), class: "nav-link nav-link__icon" do 
+      - if tweet.user.avatar_image.attached?
+        = image_tag(tweet.user.avatar_image, class: "tweet-icon__img")
+      - else
+        = image_tag('user-icon.png', class: 'tweet-icon__img')
   .tweet-info__container 
     .tweet-name__area
       p = tweet.user.name 
