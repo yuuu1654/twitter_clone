@@ -61,8 +61,10 @@ class User < ApplicationRecord
     retweets.create(tweet_id: tweet.id)
   end
 
-  def unretweet_tweet(user, tweet)
-    retweet = Retweet.find_by(user_id: user.id, tweet_id: tweet.id)
-    retweet&.destroy
+  # ▼使わなかったので、一旦コメントアウト
+  # def unretweet_tweet(user, tweet)
+  #   retweet = Retweet.find_by(user_id: user.id, tweet_id: tweet.id)
+  #   retweet&.destroy
+  # end
   end
 end
