@@ -51,4 +51,18 @@ class User < ApplicationRecord
     like = Like.find_by(user_id: user.id, tweet_id: tweet.id)
     like&.destroy
   end
+
+  # リツイート関連
+  def retweeted?(tweet)
+    retweeted_tweets.include?(tweet)
+  end
+
+  def retweet_tweet(tweet)
+    retweets.create(tweet_id: tweet.id)
+  end
+
+  def unretweet_tweet(user, tweet)
+    retweet = Retweet.find_by(user_id: user.id, tweet_id: tweet.id)
+    retweet&.destroy
+  end
 end
