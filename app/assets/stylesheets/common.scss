@@ -34,3 +34,25 @@ body {
     color: #ff2581;
   }
 }
+// リツイート
+.retweet-btn {
+  color: #8899a6;
+}
+.retweet-btn__link {
+  color: #8899a6;
+	text-decoration: none;
+  &:hover {
+    color: #8899a6;
+  }
+}
+
+.retweet-btn-unretweet {
+  color: #06BA7C;
+}
+.retweet-btn-unretweet__link {
+	text-decoration: none;
+  color: #06BA7C;
+  &:hover {
+    color: #06BA7C;
+  }
+}
