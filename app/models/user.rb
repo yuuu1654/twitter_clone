@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, -> { order('likes.created_at desc') }, through: :likes, source: :tweet # いいねしたツイートの集合
   has_one_attached :avatar_image
   has_one_attached :profile_image
 
@@ -32,5 +34,19 @@ class User < ApplicationRecord
 
   def self.create_username
     "@#{SecureRandom.alphanumeric(7)}"
+  end
+
+  # いいね関連
+  def liked?(tweet)
+    liked_tweets.include?(tweet)
+  end
+
+  def like_tweet(tweet)
+    likes.create(tweet_id: tweet.id)
+  end
+
+  def unlike_tweet(user, tweet)
+    like = Like.find_by(user_id: user.id, tweet_id: tweet.id)
+    like&.destroy
   end
 end

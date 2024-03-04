@@ -35,19 +35,11 @@
             .detail-action-icon__area
               i.bi.bi-chat.tweet-detail__action-icon
             .detail-action-icon__area
-              i.bi.bi-heart.tweet-detail__action-icon
-            .detail-action-icon__area
               i.bi.bi-repeat.tweet-detail__action-icon
             .detail-action-icon__area
+              = like_or_unlike_button(current_user, @tweet)
+            .detail-action-icon__area
               i.bi.bi-bookmark.tweet-detail__action-icon
-            / .detail-action-icon__area
-            /   i.bi.bi-chat.tweet-detail__action-icon
-            / .detail-action-icon__area
-            /   = like_or_unlike_button(current_user, @tweet)
-            / .detail-action-icon__area
-            /   = retweet_or_unretweet_button(current_user, @tweet)
-            / .detail-action-icon__area
-            /   i.bi.bi-bookmark.tweet-detail__action-icon
         / コメントフォーム
         = render "comments/form"
         = render partial: "comments/comment", collection: @comments, as: :comment

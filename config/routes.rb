@@ -21,4 +21,9 @@ Rails.application.routes.draw do
   # get '/tweets/:id', to: 'tweets#show'
   resources :tweets
   resources :comments
+
+  # ▼動く事確認済み (分かり易いURLヘルパーメソッドを使いたい為、resourcesを使用)
+  # post "/likes/:tweet_id/create", to: "likes#create"
+  # delete "/likes/:tweet_id/destroy", to: "likes#destroy"
+  resources :likes, only: %i[create destroy]
 end
