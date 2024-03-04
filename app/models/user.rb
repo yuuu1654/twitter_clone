@@ -68,5 +68,4 @@ class User < ApplicationRecord
   #   retweet = Retweet.find_by(user_id: user.id, tweet_id: tweet.id)
   #   retweet&.destroy
   # end
-  end
 end
