@@ -6,6 +6,8 @@ class Tweet < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
+  has_many :retweets, dependent: :destroy
+  has_many :retweeted_users, through: :retweets, source: :user
 
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
