@@ -6,7 +6,9 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, -> { order('likes.created_at desc') }, through: :likes, source: :tweet # いいねしたツイートの集合
   has_many :retweets, dependent: :destroy
-  has_many :retweeted_tweets, -> { order('retweets.created_at desc') }, through: :retweets, source: :tweet # リツイートしたツイートの集合
+  has_many :retweeted_tweets, lambda {
+                                order('retweets.created_at desc')
+                              }, through: :retweets, source: :tweet # リツイートしたツイートの集合
   has_one_attached :avatar_image
   has_one_attached :profile_image
 
