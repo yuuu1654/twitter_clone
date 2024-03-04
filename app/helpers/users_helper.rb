@@ -15,4 +15,20 @@ module UsersHelper
       end
     end
   end
+
+  def retweet_or_unretweet_button(user, tweet)
+    retweet = Retweet.find_by(user_id: user.id, tweet_id: tweet.id)
+    retweets_count = tweet.retweets.count
+    if user.retweeted?(tweet)
+      link_to retweet_path(retweet), method: :delete, data: { turbo_method: :delete },
+                                     class: 'retweet-btn-unretweet__link' do
+        tag.i('', class: 'bi bi-repeat retweet-btn-unretweet') + " #{retweets_count}"
+      end
+    else
+      link_to retweets_path(tweet_id: tweet.id), method: :post, data: { turbo_method: :post },
+                                                 class: 'retweet-btn__link' do
+        tag.i('', class: 'bi bi-repeat retweet-btn') + " #{retweets_count}"
+      end
+    end
+  end
 end
