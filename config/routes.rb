@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   # post "/likes/:tweet_id/create", to: "likes#create"
   # delete "/likes/:tweet_id/destroy", to: "likes#destroy"
   resources :likes, only: %i[create destroy]
+  resources :retweets, only: %i[create destroy]
 end

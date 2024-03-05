@@ -35,7 +35,7 @@
             .detail-action-icon__area
               i.bi.bi-chat.tweet-detail__action-icon
             .detail-action-icon__area
-              i.bi.bi-repeat.tweet-detail__action-icon
+              = retweet_or_unretweet_button(current_user, @tweet)
             .detail-action-icon__area
               = like_or_unlike_button(current_user, @tweet)
             .detail-action-icon__area

@@ -5,6 +5,10 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, -> { order('likes.created_at desc') }, through: :likes, source: :tweet # いいねしたツイートの集合
+  has_many :retweets, dependent: :destroy
+  has_many :retweeted_tweets, lambda {
+                                order('retweets.created_at desc')
+                              }, through: :retweets, source: :tweet # リツイートしたツイートの集合
   has_one_attached :avatar_image
   has_one_attached :profile_image
 
@@ -49,4 +53,19 @@ class User < ApplicationRecord
     like = Like.find_by(user_id: user.id, tweet_id: tweet.id)
     like&.destroy
   end
+
+  # リツイート関連
+  def retweeted?(tweet)
+    retweeted_tweets.include?(tweet)
+  end
+
+  def retweet_tweet(tweet)
+    retweets.create(tweet_id: tweet.id)
+  end
+
+  # ▼使わなかったので、一旦コメントアウト
+  # def unretweet_tweet(user, tweet)
+  #   retweet = Retweet.find_by(user_id: user.id, tweet_id: tweet.id)
+  #   retweet&.destroy
+  # end
 end

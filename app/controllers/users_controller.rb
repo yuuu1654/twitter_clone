@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   end
 
   def fetch_retweeted_tweets
-    @retweeted_tweets = Tweet.where(content: 'リツイートした投稿です').page(params[:page]).per(10)
+    @retweeted_tweets = @user.retweeted_tweets.page(params[:page]).per(10)
   end
 
   def fetch_commented_tweets
