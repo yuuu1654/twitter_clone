@@ -42,4 +42,5 @@
               i.bi.bi-bookmark.tweet-detail__action-icon
         / コメントフォーム
         = render "comments/form"
-        = render partial: "comments/comment", collection: @comments, as: :comment
+        / partial名と@commentsの一要素名が同じなら、asは省略できる
+        = render partial: "comments/comment", collection: @comments
