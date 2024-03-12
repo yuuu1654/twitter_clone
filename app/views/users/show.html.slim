@@ -8,7 +8,9 @@
     .col-md-6
 			- if user_signed_in?
 				/ プロフィールエリア
-				h3.home-link ← ゆう
+				h3.home-link 
+					| ← 
+					= @user.name
 				.user-profile__container
 					.user-profile__header
 					/ ヘッダーの名前のエリア
