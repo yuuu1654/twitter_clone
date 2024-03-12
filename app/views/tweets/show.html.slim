@@ -21,8 +21,8 @@
           .user-info__area 
             p.posted-user__name = @tweet.user.name
             p.posted-user__user-name = @tweet.user.username ||= "@yuuu1654"
-          / .user-action__area 
-          /   = render "tweets/action_modal", current_user: current_user, other_user: @tweet.user
+          .user-action__area 
+            = render "tweets/action_modal", current_user: current_user, other_user: @tweet.user
         .tweet-detail-content__container
           .tweet-detail-content__area
             p = simple_format @tweet.content, class: "tweet-detail-content"
