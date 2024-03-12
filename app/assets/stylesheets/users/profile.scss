@@ -96,6 +96,32 @@
 
 .user-profile__since-area {
 	color: #9b9a9a;
+	margin-bottom: 20px;
+}
+
+.user-profile__follow-count-area {
+
+}
+
+.following-count {
+	color: white;
+	font-weight: bold;
+}
+
+.following-text {
+	color: #9b9a9a;
+	margin-left: 10px;
+}
+
+.followers-count {
+	color: white;
+	font-weight: bold;
+	margin-left: 20px;
+}
+
+.followers-text {
+	color: #9b9a9a;
+	margin-left: 10px;
 }
 
 .user-profile__tweet-area {

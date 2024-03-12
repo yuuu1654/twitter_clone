@@ -35,6 +35,11 @@
 							.user-profile__since-area
 								i.bi.bi-calendar4-week
 								| 2019年1月からTwitterを利用しています
+							.user-profile__follow-count-area
+								span.following-count = @user.following.count
+								span.following-text フォロー中
+								span.followers-count = @user.followers.count
+								span.followers-text フォロワー
 						.user-profile__tweet-area
 							ul.nav.nav-tabs
 								li.nav-item.nav-tab__my_tweets
