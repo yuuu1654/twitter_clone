@@ -109,10 +109,10 @@ users = User.all
 user = User.find_by(email: 'test-prd01@gmail.com')
 following = users[9..30]
 followers = users[8..25]
-following.each do |followed| 
+following.each do |followed|
   user.follow(followed) unless user == followed
 end
-followers.each do |follower| 
+followers.each do |follower|
   follower.follow(user) unless user == follower
 end
 
