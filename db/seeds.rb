@@ -31,22 +31,22 @@
 # )
 
 # サンプルユーザー作成
-30.times do |n|
-  name = "user#{n}"
-  email = "hoge-#{n}@gmail.com"
-  password = Devise.friendly_token[0, 20]
-  birthday = Date.new(2000, 1, 1)
-  phone_number = "090#{rand(10_000_000..99_999_999)}"
-  username = "@#{SecureRandom.alphanumeric(7)}"
-  uid = User.create_unique_string
-  User.create!(name:,
-               email:,
-               password:,
-               birthday:,
-               phone_number:,
-               uid:,
-               username:)
-end
+# 30.times do |n|
+#   name = "user#{n}"
+#   email = "hoge-#{n}@gmail.com"
+#   password = Devise.friendly_token[0, 20]
+#   birthday = Date.new(2000, 1, 1)
+#   phone_number = "090#{rand(10_000_000..99_999_999)}"
+#   username = "@#{SecureRandom.alphanumeric(7)}"
+#   uid = User.create_unique_string
+#   User.create!(name:,
+#                email:,
+#                password:,
+#                birthday:,
+#                phone_number:,
+#                uid:,
+#                username:)
+# end
 
 # # ツイート作成 (フォローしてない人)
 # 10.times do |_n|
@@ -108,7 +108,7 @@ end
 users = User.all
 user = User.find_by(email: 'test-prd01@gmail.com')
 following = users[3..30]
-followers = users[4..25]
+followers = users[8..25]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
