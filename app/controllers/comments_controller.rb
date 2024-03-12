@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to tweet_path(params[:tweet_id]), notice: 'コメントしました'
     else
-      set_comments
       render template: 'tweets/show', status: :unprocessable_entity
     end
   end
