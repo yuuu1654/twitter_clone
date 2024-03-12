@@ -31,4 +31,18 @@ module UsersHelper
       end
     end
   end
+
+  def follow_or_unfollow_button(current_user, other_user)
+    if current_user.following?(other_user)
+      link_to relationship_path(followed_id: other_user.id), method: :delete, data: { turbo_method: :delete },
+                                                             class: 'user-action-link dropdown-item' do
+        content_tag(:i, '', class: 'bi bi-person-dash') + " #{other_user.name}さんのフォローをやめる"
+      end
+    else
+      link_to relationships_path(followed_id: other_user.id), method: :post, data: { turbo_method: :post },
+                                                              class: 'user-action-link dropdown-item' do
+        content_tag(:i, '', class: 'bi bi-person-plus') + " #{other_user.name}さんをフォローする"
+      end
+    end
+  end
 end
