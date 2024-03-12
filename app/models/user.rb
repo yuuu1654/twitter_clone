@@ -83,4 +83,20 @@ class User < ApplicationRecord
   #   retweet = Retweet.find_by(user_id: user.id, tweet_id: tweet.id)
   #   retweet&.destroy
   # end
+
+  # フォロー関連
+  def follow(other_user)
+    # 関連づけられたオブジェクト(other_user)が、既にデータベースに保存されている場合のみ<<が使えるっぽい
+    following << other_user
+    # 以下でも同様に動作した
+    # active_relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
+  end
 end
