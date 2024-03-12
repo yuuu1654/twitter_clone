@@ -105,16 +105,16 @@
 # retweeted_tweets.each { |tweet| test_user.retweet_tweet(tweet) }
 
 # フォロー関係作成
-users = User.all
-user = User.find_by(email: 'test-prd01@gmail.com')
-following = users[9..30]
-followers = users[8..25]
-following.each do |followed|
-  user.follow(followed) unless user == followed
-end
-followers.each do |follower|
-  follower.follow(user) unless user == follower
-end
+# users = User.all
+# user = User.find_by(email: 'test-prd01@gmail.com')
+# following = users[9..30]
+# followers = users[8..25]
+# following.each do |followed|
+#   user.follow(followed) unless user == followed
+# end
+# followers.each do |follower|
+#   follower.follow(user) unless user == follower
+# end
 
 # いいね・リツイート・コメントしたツイートの確認用データ
 # test_user = User.find_by(email: 'test-prd01@gmail.com')
