@@ -22,7 +22,7 @@ class User < ApplicationRecord
                                    foreign_key: 'followed_id',
                                    dependent: :destroy,
                                    inverse_of: :followed
-  has_many :followers, through: :active_relationships, source: :follower # フォロワーの集合
+  has_many :followers, through: :passive_relationships, source: :follower # フォロワーの集合
 
   has_one_attached :avatar_image
   has_one_attached :profile_image
