@@ -107,7 +107,7 @@
 # フォロー関係作成
 users = User.all
 user = User.find_by(email: 'test-prd01@gmail.com')
-following = users[3..30]
+following = users[9..30]
 followers = users[8..25]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
