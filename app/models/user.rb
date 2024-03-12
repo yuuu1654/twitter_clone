@@ -10,14 +10,14 @@ class User < ApplicationRecord
                                 order('retweets.created_at desc')
                               }, through: :retweets, source: :tweet # リツイートしたツイートの集合
   # フォローしている人
-  # follower_id : フォローする側のid, このidを持つユーザーが他のユーザーをフォローしているという関係を示す
+  # follower_id : フォローする側のid, このidを持つユーザー(自分)が他のユーザーをフォローしているという関係を示す
   has_many :active_relationships, class_name: 'Follow',
                                   foreign_key: 'follower_id',
                                   dependent: :destroy,
                                   inverse_of: :follower
   has_many :following, through: :active_relationships, source: :followed # フォローしている人の集合
   # フォローしてくれている人
-  # followed_id : フォローされる側のid, このidを持つユーザーを他のユーザーがフォローしているという関係を示す
+  # followed_id : フォローされる側のid, このidを持つユーザー(自分)を他のユーザーがフォローしているという関係を示す
   has_many :passive_relationships, class_name: 'Follow',
                                    foreign_key: 'followed_id',
                                    dependent: :destroy,
