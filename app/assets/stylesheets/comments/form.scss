@@ -1,6 +1,4 @@
 .comment-form__container {
-	// display: flex;
-	// align-items: center;
 	padding: 10px 0 10px 10px;
 	border-top: 0.9px solid rgba(92, 147, 187, 0.168627451);
 	border-bottom: 0.9px solid rgba(92, 147, 187, 0.168627451);
@@ -23,7 +21,6 @@
 }
 
 .comment-user-form__textarea {
-	// width: 100%;
 	border: none;
 	height: 80px;
 	resize: none; 
@@ -32,25 +29,12 @@
 	color: white;
 	width: 400px;
 	margin-left: 20px;
+	padding-top: 20px;
 }
 
 .comment-user-form__textarea::placeholder {
-	// padding: 40px 0 0 0;
-	padding-top: 10px;
-  font-size: 23px;
+  font-size: 21px;
 }
-
-
-// .tweet-form__img-up-btn  {
-// 	background: black;
-// 	color: #2B9BF0;
-// 	border: none;
-// 	font-size: 25px;
-// }
-
-
-
-
 
 .comment-user-form__post_btn {
 	color: white;

@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: フォロー機能作る時に関連性を整理する
-# ユーザー作成
-
 # テスト用ユーザー1 (自分)
 # User.create!(
 #   name: '本番テスト用1',
@@ -33,20 +30,23 @@
 #   uid: User.create_unique_string
 # )
 
-# # 10.times do |n|
-# #   name  = "user#{n+10}"
-# #   email = "example-#{n+10}@gmail.com"
-# # 	password = Devise.friendly_token[0, 20]
-# # 	birthday = Date.new(2000, 1, 1)
-# # 	phone_number = "090#{rand(10_000_000..99_999_999)}"
-# # 	uid = User.create_unique_string
-# #   User.create!(name: name,
-# #               email: email,
-# #               password: password,
-# #               birthday: birthday,
-# #               phone_number: phone_number,
-# # 							uid: uid)
-# # end
+# サンプルユーザー作成
+# 30.times do |n|
+#   name = "user#{n}"
+#   email = "hoge-#{n}@gmail.com"
+#   password = Devise.friendly_token[0, 20]
+#   birthday = Date.new(2000, 1, 1)
+#   phone_number = "090#{rand(10_000_000..99_999_999)}"
+#   username = "@#{SecureRandom.alphanumeric(7)}"
+#   uid = User.create_unique_string
+#   User.create!(name:,
+#                email:,
+#                password:,
+#                birthday:,
+#                phone_number:,
+#                uid:,
+#                username:)
+# end
 
 # # ツイート作成 (フォローしてない人)
 # 10.times do |_n|
@@ -92,10 +92,6 @@
 #                 content:)
 # end
 
-# # ユーザー
-# User.all
-# test_user = User.find_by(email: 'test-prd01@gmail.com')
-# followed_user = User.find_by(email: 'test-prd02@gmail.com')
 # いいねデータ作成
 # tweets = Tweet.all
 # test_user = User.find_by(email: 'test-prd01@gmail.com')
@@ -108,16 +104,17 @@
 # retweeted_tweets = tweets[15..20]
 # retweeted_tweets.each { |tweet| test_user.retweet_tweet(tweet) }
 
-# # フォロー関係作成
-# Follow.find_or_create_by(follower_id: test_user.id, followed_id: followed_user.id)
-
-# フォロー機能を作る時に実装
+# フォロー関係作成
 # users = User.all
-# user  = users.first
-# following = users[2..50]
-# followers = users[3..40]
-# following.each { |followed| user.follow(followed) }
-# followers.each { |follower| follower.follow(user) }
+# user = User.find_by(email: 'test-prd01@gmail.com')
+# following = users[9..30]
+# followers = users[8..25]
+# following.each do |followed|
+#   user.follow(followed) unless user == followed
+# end
+# followers.each do |follower|
+#   follower.follow(user) unless user == follower
+# end
 
 # いいね・リツイート・コメントしたツイートの確認用データ
 # test_user = User.find_by(email: 'test-prd01@gmail.com')

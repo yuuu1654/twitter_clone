@@ -30,7 +30,6 @@
 	// ▼ 一旦固定 レスポンシブの必要があれば修正
 	width: 622px;
   height: 207px;
-	margin-left: -12px;
 }
 
 .user-profile__icon-area {
@@ -59,11 +58,16 @@
 }
 
 .user-profile__info-area {
-	margin-top: 10px;
+	margin: 20px;
 }
 
 .user-profile__name {
 	color: white;
+}
+
+.home-link {
+	color: white;
+	margin: 5px 10px;
 }
 
 .user-profile__user-name {
@@ -92,6 +96,32 @@
 
 .user-profile__since-area {
 	color: #9b9a9a;
+	margin-bottom: 20px;
+}
+
+.user-profile__follow-count-area {
+
+}
+
+.following-count {
+	color: white;
+	font-weight: bold;
+}
+
+.following-text {
+	color: #9b9a9a;
+	margin-left: 10px;
+}
+
+.followers-count {
+	color: white;
+	font-weight: bold;
+	margin-left: 20px;
+}
+
+.followers-text {
+	color: #9b9a9a;
+	margin-left: 10px;
 }
 
 .user-profile__tweet-area {

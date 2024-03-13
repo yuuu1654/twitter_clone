@@ -22,9 +22,15 @@ Rails.application.routes.draw do
   resources :tweets
   resources :comments
 
+  # いいね関連
   # ▼動く事確認済み (分かり易いURLヘルパーメソッドを使いたい為、resourcesを使用)
   # post "/likes/:tweet_id/create", to: "likes#create"
   # delete "/likes/:tweet_id/destroy", to: "likes#destroy"
   resources :likes, only: %i[create destroy]
+
+  # リツイート関連
   resources :retweets, only: %i[create destroy]
+
+  # フォロー関連
+  resources :relationships, only: %i[create destroy]
 end

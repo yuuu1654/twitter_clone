@@ -23,12 +23,12 @@
 .user-icon__area {
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: 10px;
 }
 
 .user-info__area {
 	position: absolute;
-	left: 50px;
+	left: 60px;
 	top: -5px;
 }
 
@@ -49,7 +49,7 @@
 }
 
 .tweet-detail-content__container {
-
+	margin: 0 20px;
 }
 
 .tweet-detail-content__area {
@@ -79,9 +79,7 @@
 .tweet-detail__action-area {
 	display: flex;
 	align-items: center;
-	padding: 10px 0 10px 10px;
-	border-top: 0.9px solid rgba(92, 147, 187, 0.168627451);
-	border-bottom: 0.9px solid rgba(92, 147, 187, 0.168627451);
+	padding: 10px 0 10px 0;
 }
 
 .tweet-detail__action-icon {
