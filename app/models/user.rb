@@ -73,6 +73,15 @@ class User < ApplicationRecord
     like&.destroy
   end
 
+  # ブックマーク関連
+  def bookmarked?(tweet)
+    bookmarked_tweets.include?(tweet)
+  end
+
+  def bookmark_tweet(tweet)
+    bookmarks.create(tweet_id: tweet.id)
+  end
+
   # リツイート関連
   def retweeted?(tweet)
     retweeted_tweets.include?(tweet)
