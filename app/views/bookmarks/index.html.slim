@@ -1,0 +1,13 @@
+
+= render "layouts/navigation"
+
+= render "/users/shared/notice"
+.container.px-4.px-lg-5
+  .row
+    .col-md-3
+      = render "tweets/sidebar", user: current_user
+    .col-md-6
+      .bookmark-list__title-area
+        h4.bookmark-list__title ブックマーク
+      = render partial: "tweets/tweet", collection: @bookmarked_tweets, as: :tweet
+      = paginate @bookmarked_tweets

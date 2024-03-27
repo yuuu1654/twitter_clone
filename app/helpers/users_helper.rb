@@ -16,6 +16,22 @@ module UsersHelper
     end
   end
 
+  def bookmark_or_unbookmark_button(user, tweet)
+    bookmark = Bookmark.find_by(user_id: user.id, tweet_id: tweet.id)
+    bookmarks_count = tweet.bookmarks.count
+    if user.bookmarked?(tweet)
+      link_to bookmark_path(bookmark), method: :delete, data: { turbo_method: :delete },
+                                       class: 'bookmark-btn-unbookmark__link' do
+        tag.i('', class: 'bi bi-bookmark-fill bookmark-btn-unbookmark') + " #{bookmarks_count}"
+      end
+    else
+      link_to bookmarks_path(tweet_id: tweet.id), method: :post, data: { turbo_method: :post },
+                                                  class: 'bookmark-btn__link' do
+        tag.i('', class: 'bi bi-bookmark bookmark-btn') + " #{bookmarks_count}"
+      end
+    end
+  end
+
   def retweet_or_unretweet_button(user, tweet)
     retweet = Retweet.find_by(user_id: user.id, tweet_id: tweet.id)
     retweets_count = tweet.retweets.count

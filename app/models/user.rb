@@ -5,6 +5,10 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, -> { order('likes.created_at desc') }, through: :likes, source: :tweet # いいねしたツイートの集合
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmarked_tweets, lambda {
+                                 order('bookmarks.created_at desc')
+                               }, through: :bookmarks, source: :tweet # ブックマークしたツイートの集合
   has_many :retweets, dependent: :destroy
   has_many :retweeted_tweets, lambda {
                                 order('retweets.created_at desc')
@@ -67,6 +71,15 @@ class User < ApplicationRecord
   def unlike_tweet(user, tweet)
     like = Like.find_by(user_id: user.id, tweet_id: tweet.id)
     like&.destroy
+  end
+
+  # ブックマーク関連
+  def bookmarked?(tweet)
+    bookmarked_tweets.include?(tweet)
+  end
+
+  def bookmark_tweet(tweet)
+    bookmarks.create(tweet_id: tweet.id)
   end
 
   # リツイート関連

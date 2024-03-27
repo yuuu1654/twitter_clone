@@ -39,7 +39,7 @@
             .detail-action-icon__area
               = like_or_unlike_button(current_user, @tweet)
             .detail-action-icon__area
-              i.bi.bi-bookmark.tweet-detail__action-icon
+              = bookmark_or_unbookmark_button(current_user, @tweet)
         / コメントフォーム
         = render "comments/form"
         / partial名と@commentsの一要素名が同じなら、asは省略できる
