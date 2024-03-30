@@ -1,0 +1,50 @@
+.room__container {
+	display: flex;
+	align-items: center;
+	border: 0.9px solid rgba(92, 147, 187, 0.168627451);
+	position: relative;
+}
+
+.room-icon__container {
+	// 画像の位置を修正
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+
+.room-icon__img {
+	height: 40px;
+	width: 40px;
+	border-radius: 30px;
+}
+
+.room-info__container {
+	color: white;
+	padding: 20px 0 10px 80px;
+	width: 100%;
+	min-height: 78px;
+}
+
+.room-content__link {
+	color: white;
+	text-decoration: none;
+	&:hover {
+		color: white;
+	}
+}
+
+.room-image {
+	width: 500px;
+	height: 280px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+
+.room__action-area {
+	display: flex;
+	align-items: center;
+}
+
+.action-icon__area {
+	margin-right: 100px;
+}

@@ -1,0 +1,15 @@
+.room__container 
+  .room-icon__container
+    - other_user = room.users.where.not(id: current_user.id).first
+    - if other_user.avatar_image.attached?
+      = link_to user_path(other_user), class: "" do 
+        = image_tag(other_user.avatar_image, class: "room-icon__img")
+    - else
+      = link_to user_path(other_user), class: "" do 
+        = image_tag('user-icon.png', class: 'room-icon__img')
+  .room-info__container 
+    = link_to room_show_path(room), class: "room-content__link" do
+      .room-name__area
+        span = other_user.name 
+      .room-content__area
+        span = room.messages.last.body.truncate(15) if room.messages.last.present?
