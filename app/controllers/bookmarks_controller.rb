@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BookmarksController < ApplicationController
+  before_action :logged_in_user?, only: [:index]
   before_action :set_bookmark, only: [:destroy]
 
   def index
