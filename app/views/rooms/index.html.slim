@@ -1,0 +1,19 @@
+
+/ = render "layouts/navigation"
+
+= render "/users/shared/notice"
+.container.px-4.px-lg-5
+  .row
+    .col-md-3
+      = render "tweets/sidebar", user: current_user
+    .col-md-4
+      / メッセージ相手の一覧 (クリックすると対象のユーザーとのメッセージ詳細画面が表示)
+      .message-list__title-area
+        h4.message-list__title メッセージ
+      = render partial: "rooms/room", collection: @rooms, as: :room
+    .col-md-5
+      .message-detail__area 
+        .message-detail-announce
+          h3.message-detail__title メッセージを選択
+          br
+          p.message-detail__text  既存の会話から選択したり、新しい会話を開始できたりします
