@@ -27,7 +27,10 @@ class User < ApplicationRecord
                                    dependent: :destroy,
                                    inverse_of: :followed
   has_many :followers, through: :passive_relationships, source: :follower # フォロワーの集合
-
+  # メッセージ関連
+  has_many :entries, dependent: :destroy
+  has_many :rooms, through: :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_one_attached :avatar_image
   has_one_attached :profile_image
 
