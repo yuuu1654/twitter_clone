@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
     other_user = User.find(params[:user_id])
     other_user_entry = Entry.find_by(user_id: other_user.id)
     if other_user_entry
-      redirect_to messages_path
+      redirect_to room_show_path(other_user_entry.room_id)
     else
       @room = Room.create do |room|
         room.entries.build(user: current_user)
