@@ -1,7 +1,7 @@
 .user-action-btn {
 	background-color: black;
 	color: white;
-	margin-left: 60px;
+	margin-left: 20px;
 }
 
 // ▼背景黒にしたけど見にくいから一旦コメントアウト
@@ -14,3 +14,8 @@
 // 	color: white;
 // 	background-color: black;
 // }
+
+.action-modal__container {
+	display: flex;
+	align-items: center;
+}
