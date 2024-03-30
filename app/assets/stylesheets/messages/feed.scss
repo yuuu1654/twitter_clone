@@ -1,0 +1,39 @@
+.message-list {
+  .message {
+    margin-bottom: 10px;
+
+    &.my-message {
+      .message-content {
+        background-color: #188CD8;
+        color: white;
+        padding: 1px 10px;
+        border-radius: 20px 20px 3px 20px;
+        margin: 0 10px 0 150px;
+      }
+
+      .message-timestamp {
+        margin-right: 10px;
+        color: #8899a6;
+        text-align: right;
+      }
+    }
+
+    &.partner-message {
+      .message-content {
+        background-color: #2F3336;
+        color: white;
+        padding: 10px;
+        border-radius: 20px 20px 20px 3px;
+
+        padding: 1px 10px;
+        border-radius: 20px 20px 20px 3px;
+        margin: 0 150px 0 10px;
+      }
+
+      .message-timestamp {
+        margin-left: 10px;
+        color: #8899a6;
+      }
+    }
+  }
+}
