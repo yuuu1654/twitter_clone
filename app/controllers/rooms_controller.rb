@@ -9,14 +9,14 @@ class RoomsController < ApplicationController
   def create
     other_user = User.find(params[:user_id])
     other_user_entry = Entry.find_by(user_id: other_user.id)
-    unless other_user_entry
+    if other_user_entry
+      redirect_to messages_path
+    else
       @room = Room.create do |room|
         room.entries.build(user: current_user)
         room.entries.build(user: other_user)
       end
       redirect_to room_show_path(@room)
-    else
-      redirect_to messages_path
     end
   end
 
