@@ -22,8 +22,9 @@
 									= @user.avatar_image.attached? ? image_tag(@user.avatar_image, class: "foreground-img") : image_tag('user-icon.png', class: "foreground-img")
 								.right-area
 									.user-profile__msg-btn 
-										= link_to rooms_path(user_id: @user.id),method: :post, data: { turbo_method: :post }, class: "room-content__link" do 
-											i.bi.bi-envelope
+										- if @user != current_user
+											= link_to rooms_path(user_id: @user.id),method: :post, data: { turbo_method: :post }, class: "room-content__link" do 
+												i.bi.bi-envelope
 									.user-profile__edit-btn
 										= link_to "プロフィールを編集", edit_user_path(@user), class: 'btn btn-outline-light edit-user-btn' 
 						.user-profile__info-area
