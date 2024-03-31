@@ -38,7 +38,18 @@
 	align-items: center;
 	justify-content: space-between;
 	margin-top: 10px;
+
+	.right-area {
+		display: flex;
+    align-items: center;
+
+		.user-profile__msg-btn {
+			margin-right: 20px;
+		}
+	}
 }
+
+
 
 .user-profile__icon-img {
 

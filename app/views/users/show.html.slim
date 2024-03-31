@@ -20,8 +20,12 @@
 							.user-profile__icon-area 
 								.user-profile__icon-img
 									= @user.avatar_image.attached? ? image_tag(@user.avatar_image, class: "foreground-img") : image_tag('user-icon.png', class: "foreground-img")
-								.user-profile__edit-btn
-									= link_to "プロフィールを編集", edit_user_path(@user), class: 'btn btn-outline-light edit-user-btn' 
+								.right-area
+									.user-profile__msg-btn 
+										= link_to rooms_path(user_id: @user.id),method: :post, data: { turbo_method: :post }, class: "room-content__link" do 
+											i.bi.bi-envelope
+									.user-profile__edit-btn
+										= link_to "プロフィールを編集", edit_user_path(@user), class: 'btn btn-outline-light edit-user-btn' 
 						.user-profile__info-area
 							h3.user-profile__name = @user.name
 							p.user-profile__user-name = @user.username ||= "@yuuu1654"
