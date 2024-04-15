@@ -8,9 +8,11 @@ class RoomsController < ApplicationController
 
   def create
     other_user = User.find(params[:user_id])
-    other_user_entry = Entry.find_by(user_id: other_user.id)
-    if other_user_entry
-      redirect_to room_show_path(other_user_entry.room_id)
+    # 自分と相手がすでに参加しているルームを探す
+    shared_room = Room.shared_room(current_user.id, other_user.id)
+
+    if shared_room
+      redirect_to room_show_path(shared_room.id)
     else
       @room = Room.create do |room|
         room.entries.build(user: current_user)
