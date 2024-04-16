@@ -1,0 +1,35 @@
+.message-detail__header  {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    position: sticky; // fixだとレイアウト崩れた
+    top: 0;
+}
+
+.message-detail__recipient-user-name {
+    padding-left: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.message-detail__title {
+    font-weight: bold;
+    color: white;
+}
+
+.message-detail__text {
+
+}
+
+.message-detail__main {
+    overflow-y: auto; // 独立してスクロールできるようにする
+    min-height: 900px;
+    max-height: calc(100vh - 130px);  // ビューポートの高さ - (header&formの高さの合計)
+}
+
+.message-detail__form_area {
+    position: sticky;
+    bottom: 0;
+    
+}

@@ -1,0 +1,26 @@
+
+/ = render "layouts/navigation"
+
+= render "/users/shared/notice"
+.container.px-4.px-lg-5
+  .row
+    .col-md-3
+      = render "tweets/sidebar", user: current_user
+    .col-md-4
+      / メッセージ相手の一覧 (クリックすると対象のユーザーとのメッセージ詳細画面が表示)
+      .message-list__title-area
+        h4.message-list__title メッセージ
+      = render partial: "rooms/room", collection: @rooms, as: :room
+    .col-md-5
+      .message-detail__header 
+        .message-detail__user-icon 
+          - if @other_user.avatar_image.attached?
+            = image_tag(@other_user.avatar_image, class: "tweet-icon__img")
+          - else
+            = image_tag('user-icon.png', class: 'tweet-icon__img')
+        .message-detail__recipient-user-name
+          span.recipient-user-name = @other_user.name
+      .message-detail__main
+        = render partial: 'messages/feed', collection: @messages, as: :message
+      .message-detail__form_area
+        = render 'messages/form', other_user: @other_user

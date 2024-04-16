@@ -14,10 +14,11 @@
             h4 ← ポストする
         .user-info__container 
           .user-icon__area 
-            - if @tweet.user.avatar_image.attached?
-              = image_tag(@tweet.user.avatar_image, class: "tweet-icon__img")
-            - else
-              = image_tag('user-icon.png', class: 'tweet-icon__img')
+            = link_to user_path(@tweet.user), class: "" do 
+              - if @tweet.user.avatar_image.attached?
+                = image_tag(@tweet.user.avatar_image, class: "tweet-icon__img")
+              - else
+                = image_tag('user-icon.png', class: 'tweet-icon__img')
           .user-info__area 
             p.posted-user__name = @tweet.user.name
             p.posted-user__user-name = @tweet.user.username ||= "@yuuu1654"

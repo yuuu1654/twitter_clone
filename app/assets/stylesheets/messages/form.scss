@@ -1,0 +1,75 @@
+.message-form__container {
+	border: 0.5px solid #5c93bb2b;
+
+  .message-action__container  {
+    display: flex;
+    align-items: center;
+    background-color: black;
+  }
+
+  .message-textarea__area {
+    display: flex; // flexboxコンテナ
+    justify-content: center; // 水平方向の中心
+    align-items: center; // 垂直方向の中心
+    text-align: center; // 子要素のテキストを中心に配置
+    
+    .message-form__textarea {
+      border: none;
+      height: 60px;
+      background-color: #2F3336;
+      border-radius: 21px;
+      color: white;
+      width: 470px;
+      padding: 13px 0 0 10px;
+      margin: 7px;
+    }
+    
+    .message-form__textarea::placeholder {
+      font-size: 20px;
+    }
+  }
+
+  .message-post-btn__area {
+    position: relative; 
+
+    .message-submit__btn {
+      height: 45px;
+      width: 40px;
+      // margin-right: 10px;
+    }
+
+    .message-post-icon {
+      margin-right: 15px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-size: 23px;
+      transform: rotate(45deg);
+      color: #2B9BF0;
+    }
+  }
+}
+
+.message-form__img-up-btn  {
+	background: black;
+	color: #2B9BF0;
+	border: none;
+	font-size: 25px;
+}
+
+.message-form__img-up-btn .form-control-file {
+  display: none;
+}
+
+.image-preview {
+  width: 300px; 
+  height: auto; 
+  max-height: 500px; 
+}
+
+.message-form__post_btn {
+	color: white;
+	font-weight: bold;
+	background-color: #2B9BF0;
+	border-radius: 20px;
+}

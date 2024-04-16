@@ -1,6 +1,7 @@
-// .col-md-6 {
-// 	border: 0.5px solid #9b9a9a;
-// }
+.home-link {
+	color: white;
+	margin: 5px 10px;
+}
 
 .user-profile__container {
 
@@ -37,7 +38,18 @@
 	align-items: center;
 	justify-content: space-between;
 	margin-top: 10px;
+
+	.right-area {
+		display: flex;
+    align-items: center;
+
+		.user-profile__msg-btn {
+			margin-right: 20px;
+		}
+	}
 }
+
+
 
 .user-profile__icon-img {
 
@@ -63,11 +75,6 @@
 
 .user-profile__name {
 	color: white;
-}
-
-.home-link {
-	color: white;
-	margin: 5px 10px;
 }
 
 .user-profile__user-name {

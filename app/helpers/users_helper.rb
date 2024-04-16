@@ -57,8 +57,15 @@ module UsersHelper
     else
       link_to relationships_path(followed_id: other_user.id), method: :post, data: { turbo_method: :post },
                                                               class: 'user-action-link dropdown-item' do
-        content_tag(:i, '', class: 'bi bi-person-plus') + " #{other_user.name}さんをフォローする"
+        content_tag(:i, '', class: 'bi bi-person-plus') + " #{other_user.username}さんをフォローする"
       end
+    end
+  end
+
+  def message_button(tweet)
+    link_to rooms_path(user_id: tweet.user.id), method: :post, data: { turbo_method: :post },
+                                                class: 'user-action-link dropdown-item' do
+      content_tag(:i, '', class: 'bi bi-envelope') + " #{tweet.user.username}さんにメッセージを送信する"
     end
   end
 end

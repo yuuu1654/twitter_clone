@@ -1,0 +1,12 @@
+= form_with(model: @message, url: messages_path(room_id: @room.id, other_user_id: other_user.id), class: "message-form__container", local: true) do |f|
+  - if @message.errors.any?
+    .alert.alert-danger
+      ul
+        - @message.errors.full_messages.each do |msg|
+          li = msg
+  .message-action__container 
+    .message-textarea__area 
+      = f.text_area :body, class: "message-form__textarea", placeholder: "新しいメッセージを作成"
+    .message-post-btn__area
+      button type="submit" class="btn btn-default message-submit__btn"
+        i.bi.bi-send.message-post-icon

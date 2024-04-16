@@ -7,6 +7,9 @@ body {
   border-top: 0;
   border-bottom: 0;
   padding: 0;
+  overflow-y: auto;
+  min-height: 900px;
+  max-height: calc(100vh - 130px);
 }
 .col-md-5 {
   border: 0.9px solid rgba(186, 212, 230, 0.469);

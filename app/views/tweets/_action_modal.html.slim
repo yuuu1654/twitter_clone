@@ -1,8 +1,13 @@
 / 3点ボタンのドロップダウンメニュー
 - if current_user != other_user
-  .dropdown
-    button.user-action-btn.btn type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" 
-      | •••
-    ul.user-action-items.dropdown-menu aria-labelledby="dropdownMenuButton"
-      li
-        = follow_or_unfollow_button(current_user, other_user)
+  .action-modal__container
+    .room-content__area
+      / = link_to rooms_path(user_id: @tweet.user.id),method: :post, data: { turbo_method: :post }, class: "room-content__link" do
+        i.bi.bi-envelope
+    .dropdown
+      button.user-action-btn.btn type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" 
+        | •••
+      ul.user-action-items.dropdown-menu aria-labelledby="dropdownMenuButton"
+        li
+          = follow_or_unfollow_button(current_user, other_user)
+          = message_button(@tweet)

@@ -1,0 +1,23 @@
+.message-list__title-area {
+  // height: 40px;
+  border: 0.9px solid rgba(92, 147, 187, 0.168627451);
+}
+
+.message-list__title {
+  font-weight: bold;
+  color: white;
+  padding: 15px 0 10px 15px;
+}
+
+.message-detail__area {
+  display: flex; // flexboxコンテナ
+  justify-content: center; // 水平方向の中心
+  align-items: center; // 垂直方向の中心
+  text-align: center; // 子要素のテキストを中心に配置
+  height: 100%; // 親要素の高さが指定されている必要がある
+  // 以下のプロパティは`.message-detail__area`の高さが設定されていない場合に役立つ
+  
+  .message-detail-announce {
+    
+  }
+}

@@ -1,0 +1,15 @@
+.message-list 
+  - if message.sender_id == current_user.id 
+    / 自分のメッセージ
+    .message.my-message 
+      .message-content 
+        p = simple_format message.body
+      .message-timestamp
+        span = message.created_at.strftime('%Y年%m月%d日 %H:%M')
+  - else 
+    / 相手のメッセージ
+    .message.partner-message 
+      .message-content 
+        p = simple_format message.body
+      .message-timestamp
+        span = message.created_at.strftime('%Y年%m月%d日 %H:%M')

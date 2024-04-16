@@ -36,4 +36,10 @@ Rails.application.routes.draw do
 
   # ブックマーク
   resources :bookmarks, only: %i[index create destroy]
+
+  # メッセージ
+  resources :messages, only: %i[create]
+  get '/messages', to: 'rooms#index'
+  post '/messages/:user_id', to: 'rooms#create', as: 'rooms'
+  get '/messages/:room_id', to: 'rooms#show', as: 'room_show'
 end
