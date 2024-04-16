@@ -1,0 +1,16 @@
+
+= render "layouts/navigation"
+
+= render "/users/shared/notice"
+.container.px-4.px-lg-5
+  .row
+    .col-md-3
+      = render "tweets/sidebar", user: current_user
+    .col-md-6
+      .notification-list__title-area
+        h4.notification-list__title 通知
+      - if @notifications.present?
+        - @notifications.each do |notification|
+          = render "#{notification.action_type}", notification: notification 
+      - else 
+        | 通知はありません
