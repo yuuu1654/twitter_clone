@@ -13,7 +13,7 @@ class Retweet < ApplicationRecord
   private
 
   def create_notifications
-    notification = Notification.create(subject: self, user: tweet.user, action_type: :retweeted_to_own_tweet)
-    NotificationMailer.notification_email(notification).deliver_now
+    Notification.create(subject: self, user: tweet.user, action_type: :retweeted_to_own_tweet)
+    # NotificationMailer.notification_email(notification).deliver_now
   end
 end
