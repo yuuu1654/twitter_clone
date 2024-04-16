@@ -33,6 +33,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_one_attached :avatar_image
   has_one_attached :profile_image
+  has_many :notifications, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :lockable,

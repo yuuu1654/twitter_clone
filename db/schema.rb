@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_06_062038) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_24_085549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -103,6 +103,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_062038) do
     t.index ["sender_id"], name: "index_messages_on_sender_id"
     t.check_constraint "sender_id <> recipient_id", name: "messages_sender_id_recipient_id_check"
   end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "subject_type"
+    t.bigint "subject_id"
+    t.bigint "user_id"
+    t.integer "action_type", null: false
+    t.boolean "checked", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_type", "subject_id"], name: "index_notifications_on_subject"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "retweets", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "tweet_id", null: false
@@ -186,6 +199,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_062038) do
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "users", column: "recipient_id"
   add_foreign_key "messages", "users", column: "sender_id"
+  add_foreign_key "notifications", "users"
   add_foreign_key "retweets", "tweets"
   add_foreign_key "retweets", "users"
   add_foreign_key "tweets", "users"
