@@ -42,4 +42,7 @@ Rails.application.routes.draw do
   get '/messages', to: 'rooms#index'
   post '/messages/:user_id', to: 'rooms#create', as: 'rooms'
   get '/messages/:room_id', to: 'rooms#show', as: 'room_show'
+
+  # 通知
+  resources :notifications, only: [:index]
 end
