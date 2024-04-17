@@ -15,7 +15,7 @@ class Follow < ApplicationRecord
   private
 
   def create_notifications
-    Notification.create(subject: self, user: followed, action_type: :followed_me)
-    # NotificationMailer.notification_email(notification).deliver_now
+    notification = Notification.create(subject: self, user: followed, action_type: :followed_me)
+    NotificationMailer.notification_email(notification).deliver_now
   end
 end

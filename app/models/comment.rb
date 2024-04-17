@@ -11,7 +11,7 @@ class Comment < ApplicationRecord
   private
 
   def create_notifications
-    Notification.create(subject: self, user: tweet.user, action_type: :commented_to_own_tweet)
-    # NotificationMailer.notification_email(notification).deliver_now
+    notification = Notification.create(subject: self, user: tweet.user, action_type: :commented_to_own_tweet)
+    NotificationMailer.notification_email(notification).deliver_now
   end
 end
