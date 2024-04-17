@@ -141,8 +141,8 @@ user1 = User.find_or_create_by!(email: 'test-prd01@gmail.com') do |user|
 end
 
 user2 = User.find_or_create_by!(email: 'test-prd02@gmail.com') do |user|
-  user.name = '本番テスト用1'
-  user.password = 'testprd01'
+  user.name = '本番テスト用2'
+  user.password = 'testprd02'
   user.birthday = Date.new(2000, 1, 1)
   user.phone_number = "090#{rand(10_000_000..99_999_999)}"
   user.uid = User.create_unique_string
