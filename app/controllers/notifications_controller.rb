@@ -5,9 +5,11 @@ class NotificationsController < ApplicationController
 
   def index
     @notifications = current_user.notifications.order(created_at: :desc)
-    @notifications.where(checked: false).find_each do |notification|
-      notification.update(checked: true)
-    end
+    # @notifications.where(checked: false).find_each do |notification|
+    #   notification.update(checked: true)
+    # end
+    # ▼update_allを用いて一斉更新するようリファクタ
+    @notifications.update_all(checked: true)
   end
 
   def destroy
