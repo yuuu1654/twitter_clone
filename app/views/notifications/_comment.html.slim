@@ -1,0 +1,20 @@
+- if notification.resource.user != current_user 
+  .notification__container 
+    .notification-icon__container
+      i.bi.bi-chat-fill.notification-commented-icon
+    .notification-info__container 
+      .notification-action-user-icon 
+        = link_to user_path(notification.resource.user), class: "nav-link nav-link__icon" do 
+          - if notification.resource.user.avatar_image.attached?
+            = image_tag(notification.resource.user.avatar_image, class: "notification-icon__img")
+          - else
+            = image_tag('user-icon.png', class: 'notification-icon__img')
+        = link_to notification.resource.user.name, user_path(notification.resource.user)
+        | があなたの
+        = link_to '投稿', tweet_path(notification.resource.tweet)
+        | にコメントしました
+        = " (#{time_ago_in_words(notification.created_at)}前)"
+      .notification-content__area
+        = link_to tweet_path(notification.resource.tweet), class: "notification-content__link" do
+          span.notification-tweet-content = simple_format notification.resource.tweet.content 
+      
