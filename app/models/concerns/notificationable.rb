@@ -17,6 +17,6 @@ module Notificationable
                    end
 
     logger.debug "hogehoge: #{notification.action_type}"
-    NotificationMailer.notification_email(notification).deliver_now
+    # NotificationMailer.notification_email(notification).deliver_now
   end
 end
