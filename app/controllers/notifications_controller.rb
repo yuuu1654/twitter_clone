@@ -8,8 +8,9 @@ class NotificationsController < ApplicationController
     # @notifications.where(checked: false).find_each do |notification|
     #   notification.update(checked: true)
     # end
-    # ▼update_allを用いて一斉更新するようリファクタ
-    @notifications.update_all(checked: true)
+    # ▼update_allを用いて一斉更新するようリファクタ (←バリデーションをスキップしてしまうrubocopエラーの為コメントアウト)
+    # @notifications.update_all(checked: true)
+    @notifications.each { |notification| notification.update(checked: true) }
   end
 
   def destroy
