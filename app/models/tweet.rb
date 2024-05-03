@@ -3,7 +3,7 @@
 class Tweet < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  has_one :notification, as: :subject, dependent: :destroy
+  has_one :notification, as: :resource, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user

@@ -154,7 +154,7 @@ tweet = Tweet.create!(user: user1, content: 'user1のツイートです')
 # いいね通知
 like = Like.create!(user: user2, tweet:)
 Notification.create!(
-  subject: like,
+  resource: like,
   user: user1,
   action_type: 1,
   checked: false
@@ -163,7 +163,7 @@ Notification.create!(
 # リツイート通知の作成
 retweet = Retweet.create!(user: user2, tweet:)
 Notification.create!(
-  subject: retweet,
+  resource: retweet,
   user: user1,
   action_type: 3,
   checked: false
@@ -172,7 +172,7 @@ Notification.create!(
 # フォロー通知
 follow = Follow.create!(follower: user2, followed: user1)
 Notification.create!(
-  subject: follow,
+  resource: follow,
   user: user1,
   action_type: 2,
   checked: false
@@ -181,7 +181,7 @@ Notification.create!(
 # コメント通知
 comment = Comment.create!(user: user2, tweet:, content: 'user2が、user1のツイートにコメントしました')
 Notification.create!(
-  subject: comment,
+  resource: comment,
   user: user1,
   action_type: 0,
   checked: false

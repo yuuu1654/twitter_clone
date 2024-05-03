@@ -3,8 +3,8 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :tweet
-  has_one :notification, as: :subject, dependent: :destroy
   after_create_commit :create_notifications
+  has_one :notification, as: :resource, dependent: :destroy
 
   validates :user_id, presence: true
   validates :tweet_id, presence: true

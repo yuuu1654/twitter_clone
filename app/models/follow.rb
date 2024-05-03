@@ -5,8 +5,8 @@ class Follow < ApplicationRecord
   belongs_to :follower, class_name: 'User', inverse_of: :active_relationships
   belongs_to :followed, class_name: 'User', inverse_of: :passive_relationships
 
-  has_one :notification, as: :subject, dependent: :destroy
   after_create_commit :create_notifications
+  has_one :notification, as: :resource, dependent: :destroy
 
   validates :follower_id, presence: true
   validates :followed_id, presence: true
