@@ -15,21 +15,6 @@ class NotificationMailer < ApplicationMailer
 
   private
 
-  def generate_subject(notification)
-    case notification.action_type
-    when 'commented_to_own_tweet'
-      "#{@action_user.name}さんがあなたのツイートにコメントしました。"
-    when 'liked_to_own_tweet'
-      "#{@action_user.name}さんがあなたのツイートをいいねしました。"
-    when 'followed_me'
-      "#{@action_user.name}さんにフォローされました。"
-    when 'retweeted_to_own_tweet'
-      "#{@action_user.name}さんがあなたのツイートをリツイートしました。"
-    else
-      '新しい通知があります。'
-    end
-  end
-
   def generate_content(notification)
     case notification.action_type
     when 'commented_to_own_tweet'
