@@ -4,5 +4,5 @@ class Notification < ApplicationRecord
   belongs_to :resource, polymorphic: true
   belongs_to :user
 
-  enum action_type: { commented_to_own_tweet: 0, liked_to_own_tweet: 1, followed_me: 2, retweeted_to_own_tweet: 3 }
+  enum action_type: { comment: 0, like: 1, follow: 2, retweet: 3 }
 end
