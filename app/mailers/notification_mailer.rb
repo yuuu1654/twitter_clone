@@ -4,13 +4,13 @@ class NotificationMailer < ApplicationMailer
   def notification_email(notification)
     @notification = notification
     @user = notification.user
-    @action_user = if @notification.action_type == 'followed_me'
-                     notification.subject.follower
+    @action_user = if @notification.action_type == 'follow'
+                     notification.resource.follower
                    else
-                     notification.subject.user
+                     notification.resource.user
                    end
     @content = generate_content(@notification)
-    mail to: 'to@example.org', subject: generate_subject(@notification)
+    mail to: 'to@example.org', subject: generate_content(@notification)
   end
 
   private
