@@ -131,3 +131,58 @@
 #   Tweet.create!(user_id:,
 #                 content:)
 # end
+
+user1 = User.find_or_create_by!(email: 'test-prd01@gmail.com') do |user|
+  user.name = '本番テスト用1'
+  user.password = 'testprd01'
+  user.birthday = Date.new(2000, 1, 1)
+  user.phone_number = "090#{rand(10_000_000..99_999_999)}"
+  user.uid = User.create_unique_string
+end
+
+user2 = User.find_or_create_by!(email: 'test-prd02@gmail.com') do |user|
+  user.name = '本番テスト用2'
+  user.password = 'testprd02'
+  user.birthday = Date.new(2000, 1, 1)
+  user.phone_number = "090#{rand(10_000_000..99_999_999)}"
+  user.uid = User.create_unique_string
+end
+
+# テスト用ツイート
+tweet = Tweet.create!(user: user1, content: 'user1のツイートです')
+
+# いいね通知
+like = Like.create!(user: user2, tweet:)
+Notification.create!(
+  resource: like,
+  user: user1,
+  action_type: 1,
+  checked: false
+)
+
+# リツイート通知の作成
+retweet = Retweet.create!(user: user2, tweet:)
+Notification.create!(
+  resource: retweet,
+  user: user1,
+  action_type: 3,
+  checked: false
+)
+
+# フォロー通知
+follow = Follow.create!(follower: user2, followed: user1)
+Notification.create!(
+  resource: follow,
+  user: user1,
+  action_type: 2,
+  checked: false
+)
+
+# コメント通知
+comment = Comment.create!(user: user2, tweet:, content: 'user2が、user1のツイートにコメントしました')
+Notification.create!(
+  resource: comment,
+  user: user1,
+  action_type: 0,
+  checked: false
+)

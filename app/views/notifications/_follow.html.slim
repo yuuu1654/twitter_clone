@@ -1,0 +1,18 @@
+- if notification.resource
+  .notification__container 
+    .notification-icon__container
+      i.bi.bi-person-fill.notification-followed-icon
+    .notification-info__container 
+      .notification-action-user-icon 
+        = link_to user_path(notification.resource.follower), class: "nav-link nav-link__icon" do 
+          - if notification.resource.follower.avatar_image.attached?
+            = image_tag(notification.resource.follower.avatar_image, class: "notification-icon__img")
+          - else
+            = image_tag('user-icon.png', class: 'notification-icon__img')
+        - if notification.resource.follower
+          = link_to notification.resource.follower.name, user_path(notification.resource.follower)
+        - else
+          = link_to notification.resource.follower.name, user_path(notification.resource.follower)
+        | があなたをフォローしました
+        = " (#{time_ago_in_words(notification.created_at)}前)"
+      

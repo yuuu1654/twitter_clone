@@ -1,0 +1,63 @@
+.notification__container {
+	display: flex;
+	align-items: center;
+	border: 0.9px solid rgba(92, 147, 187, 0.168627451);
+	position: relative;
+}
+
+.notification-icon__container {
+	// 画像の位置を修正
+	position: absolute;
+	top:35px;
+	left: 20px;
+}
+
+.notification-liked-icon {
+  color: #ff2581;
+  font-size: 30px;
+}
+
+.notification-retweeted-icon {
+  color: #06BA7C;
+  font-size: 30px;
+}
+
+.notification-followed-icon {
+  color: #2B9BF0;
+  font-size: 35px;
+}
+
+.notification-commented-icon {
+  font-size: 35px;
+}
+
+.notification-icon__img {
+	height: 40px;
+	width: 40px;
+	border-radius: 30px;
+  margin-bottom: 10px;
+}
+
+.notification-info__container {
+	color: white;
+	padding: 20px 10px 10px 80px;
+	width: 100%;
+}
+
+.notification-content__link {
+	color: white;
+	text-decoration: none;
+	&:hover {
+		color: white;
+	}
+}
+
+.notification-content__area {
+  margin-top: 20px;
+}
+
+.notification-tweet-content {
+  color: #464545;
+}
+
+
