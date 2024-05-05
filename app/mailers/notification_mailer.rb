@@ -4,7 +4,7 @@ class NotificationMailer < ApplicationMailer
   def notification_email(notification)
     @notification = notification
     @user = notification.user
-    @action_user = if @notification.action_type == 'follow'
+    @action_user = if notification.follow?
                      notification.resource.follower
                    else
                      notification.resource.user
